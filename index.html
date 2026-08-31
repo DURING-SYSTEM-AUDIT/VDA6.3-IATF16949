@@ -437,6 +437,116 @@ body,.topbar,.panel,.guide-card,.sidebar,input,textarea,select,.btn{
 }
 </style>
 
+
+<style id="htmlReportLayoutEnhance">
+#htmlReportDialog.report-maximized{width:99vw!important;max-width:99vw!important;height:98vh!important;max-height:98vh!important}
+#htmlReportFrame{min-height:600px}
+</style>
+
+<style id="reportFullscreenInnerFix">
+#htmlReportDialog.report-maximized{
+  position:fixed!important;
+  inset:0!important;
+  width:100vw!important;
+  max-width:100vw!important;
+  height:100vh!important;
+  max-height:100vh!important;
+  margin:0!important;
+  border-radius:0!important;
+}
+#htmlReportDialog.report-maximized #htmlReportFrame{
+  width:100%!important;
+  height:calc(100vh - 105px)!important;
+  min-height:0!important;
+  flex:1 1 auto!important;
+}
+#htmlReportModal.show:has(#htmlReportDialog.report-maximized){
+  padding:0!important;
+}
+</style>
+
+
+<style id="trainingHtmlFullscreenStyle">
+#trainingHtmlDialog.training-maximized{
+  position:fixed!important;inset:0!important;width:100vw!important;max-width:100vw!important;
+  height:100vh!important;max-height:100vh!important;margin:0!important;border-radius:0!important;
+}
+#trainingHtmlDialog.training-maximized #trainingHtmlFrame{
+  width:100%!important;height:calc(100vh - 105px)!important;min-height:0!important;flex:1 1 auto!important;
+}
+</style>
+
+<style id="duringHomeStyle">
+.during-home{display:none;min-height:100vh;background:#f3f6fa;padding:28px;color:#162033}
+body.home-mode .app{grid-template-columns:1fr}
+body.home-mode .sidebar,body.home-mode .topbar,body.home-mode .content{display:none!important}
+body.home-mode .during-home{display:block}
+.home-shell{max-width:1480px;margin:0 auto}
+.home-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:26px 30px;background:#12324f;color:#fff;border-radius:16px}
+.home-eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;color:#a8c7e5}.home-head h1{font-size:32px;margin:7px 0 8px}.home-head p{margin:0;color:#d8e7f5;line-height:1.55}
+.home-user{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.home-user .btn{background:#fff;color:#162033}
+.home-kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:16px 0}
+.home-kpi{background:#fff;border:1px solid #d6dee8;border-radius:12px;padding:16px}.home-kpi span{font-size:13px;color:#65758a}.home-kpi b{display:block;font-size:28px;margin:6px 0 2px;color:#12324f}.home-kpi small{color:#8a98aa}
+.home-main-grid{display:grid;grid-template-columns:2fr 1fr;gap:14px}.home-lower-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:14px;margin-top:14px}
+.home-card{background:#fff;border:1px solid #d6dee8;border-radius:14px;padding:20px}.home-card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}.home-card-head small{font-weight:800;letter-spacing:.08em;color:#6f849b}.home-card h2{margin:3px 0 0;font-size:19px}.home-card-head>b{font-size:26px;color:#1d5da8}
+.home-standard-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.home-standard{border:1px solid #cbd8e6;background:#f9fbfd;border-radius:12px;padding:18px;text-align:left;cursor:pointer;color:#162033}.home-standard:hover{border-color:#4c8fd8;background:#f2f7fd}.home-standard-code{display:inline-block;background:#e7f0fb;color:#195b9e;border-radius:6px;padding:4px 8px;font-weight:900}.home-standard strong{display:block;font-size:17px;margin:11px 0 6px}.home-standard em{display:block;font-style:normal;font-size:13px;line-height:1.5;color:#65758a}
+.home-actions-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.home-progress{height:12px;background:#e8edf3;border-radius:99px;overflow:hidden}.home-progress>div{height:100%;width:0;background:#2878c8;border-radius:99px}.home-status-row{display:flex;justify-content:space-between;margin:9px 0 13px;font-size:13px;color:#65758a}
+.home-donut{width:150px;height:150px;margin:6px auto 12px;border-radius:50%;background:#e6ebf0;position:relative}.home-donut:after{content:"";position:absolute;inset:30px;background:#fff;border-radius:50%}.home-donut span{position:absolute;inset:0;display:grid;place-items:center;z-index:1;font-size:25px;font-weight:900}
+.home-mini-legend{font-size:12px}.home-mini-legend div{display:grid;grid-template-columns:10px 1fr auto;gap:7px;padding:4px 0;border-bottom:1px dashed #e5e9ef}.home-mini-legend i{width:9px;height:9px;border-radius:2px;margin-top:3px}
+.home-flow{display:flex;align-items:stretch;gap:8px}.home-flow>div{flex:1;border:1px solid #d9e1ea;background:#f9fbfd;border-radius:10px;padding:12px;min-width:0}.home-flow b{display:block;color:#2878c8;font-size:12px}.home-flow strong{display:block;margin:5px 0}.home-flow span{font-size:12px;color:#6b7b8d;line-height:1.4}.home-flow i{align-self:center;font-style:normal;color:#97a7b8}
+.home-recent{display:grid;gap:8px}.home-recent .item{border-bottom:1px solid #e5e9ef;padding:8px 0}.home-recent .item b{font-size:12px;color:#1f67aa}.home-recent .item p{margin:3px 0;font-size:13px;line-height:1.45}.home-recent .item small{color:#7d8b9b}
+body.dark .during-home{background:#0c1119;color:#f4f7fb}body.dark .home-head{background:#071b2f}.home-card,body.dark .home-card{color:inherit}body.dark .home-card,body.dark .home-kpi{background:#121923;border-color:#344252}.home-standard,body.dark .home-standard{color:inherit}body.dark .home-standard{background:#0d141e;border-color:#3b4a5c}body.dark .home-kpi b{color:#fff}body.dark .home-kpi span,body.dark .home-kpi small,body.dark .home-standard em,body.dark .home-flow span{color:#b7c4d3}body.dark .home-flow>div{background:#0d141e;border-color:#344252}body.dark .home-donut:after{background:#121923}
+@media(max-width:1050px){.home-kpis{grid-template-columns:repeat(3,1fr)}.home-main-grid,.home-lower-grid{grid-template-columns:1fr}.home-flow{flex-wrap:wrap}.home-flow i{display:none}}
+@media(max-width:680px){.during-home{padding:14px}.home-head{padding:20px;flex-direction:column}.home-kpis{grid-template-columns:1fr 1fr}.home-standard-grid{grid-template-columns:1fr}}
+</style>
+
+
+<style id="auditorFocusedHomeStyle">
+.auditor-home-grid{grid-template-columns:1.55fr 1fr}
+.auditor-focus-grid{grid-template-columns:1fr 1fr}
+.home-note{margin:-3px 0 14px;color:#6b7b8d;font-size:12px;line-height:1.5}
+.source-chip{font-size:11px;border:1px solid #cbd8e6;background:#f4f7fb;color:#51677f;border-radius:20px;padding:5px 8px}
+.source-note{margin-top:10px;font-size:10px;color:#8190a0;line-height:1.4}
+.global-bars{display:grid;gap:10px}
+.global-bar{display:grid;grid-template-columns:minmax(150px,260px) 1fr 58px;gap:10px;align-items:center}
+.global-bar label{font-size:12px;font-weight:700;color:#26384b}.global-bar .track{height:12px;border-radius:99px;background:#e7edf4;overflow:hidden}.global-bar .fill{height:100%;border-radius:99px;background:#2d75b8}.global-bar b{font-size:12px;text-align:right}
+.rank-list{display:grid;gap:7px}.rank-row{display:grid;grid-template-columns:32px 80px 1fr;gap:9px;align-items:center;border-bottom:1px solid #e8edf2;padding:8px 0}.rank-row .rank{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#e8f1fa;color:#1d5f9f;font-weight:900}.rank-row code{font-family:inherit;font-weight:900;color:#234e76}.rank-row span{font-size:12px;line-height:1.4}
+.home-next-audits{display:grid;gap:8px}.next-audit-row{border:1px solid #d9e2eb;border-radius:9px;padding:10px 11px;background:#fafcfe}.next-audit-row b{display:block;font-size:13px;color:#184f80}.next-audit-row span{display:block;margin-top:3px;font-size:12px;color:#5f7185}.next-audit-row small{display:block;margin-top:5px;color:#8996a5}
+.dept-prep-list{display:grid;gap:8px;max-height:330px;overflow:auto}.dept-prep{border:1px solid #dbe3ec;border-radius:9px;padding:10px}.dept-prep h3{margin:0 0 6px;font-size:13px}.dept-prep p{margin:3px 0;font-size:12px;line-height:1.45;color:#627489}.dept-prep b{color:#174f80}
+.home-workflow-card{margin-top:14px}
+body.dark .global-bar label,body.dark .rank-row span,body.dark .home-note{color:#c7d2de}body.dark .global-bar .track{background:#263444}body.dark .rank-row{border-color:#344252}body.dark .next-audit-row,body.dark .dept-prep{background:#0d141e;border-color:#344252}body.dark .next-audit-row span,body.dark .dept-prep p{color:#b7c4d3}
+@media(max-width:1000px){.auditor-home-grid,.auditor-focus-grid{grid-template-columns:1fr}.global-bar{grid-template-columns:140px 1fr 50px}}
+</style>
+
+
+<style id="educationGroundedDetailStyle">
+.term-box{margin:12px 0;padding:10px 12px;background:#f6f9fc;border:1px solid #dbe3ec;border-radius:8px}.term-box>b{display:block;margin-bottom:7px}.term-chip{display:inline-block;margin:3px 4px 3px 0;padding:4px 8px;border-radius:20px;background:#e6f0fa;color:#225d92;font-size:11px;font-weight:700}.education-note{margin-top:11px;padding:11px 13px;border-left:4px solid #3980be;background:#f5f9fd}.education-note p{margin:5px 0;line-height:1.55}.training-desc{font-size:12px;color:#687b8e;line-height:1.55}.related-clause small{display:block;margin-top:3px;color:#7a8a9b}
+body.dark .term-box,body.dark .education-note{background:#0e1721;border-color:#344252}.body.dark .term-chip{background:#19334c;color:#cfe7ff}
+</style>
+
+<style id="benchmarkOfficialLinkStyle">
+.official-link-row{display:flex;gap:7px;flex-wrap:wrap;margin:-3px 0 13px}
+.official-link-row a{display:inline-flex;align-items:center;min-height:31px;padding:6px 10px;border:1px solid #b9cfe3;border-radius:7px;background:#f7fbff;color:#155990;text-decoration:none;font-size:11px;font-weight:800}
+.official-link-row a:hover{background:#edf6ff;text-decoration:underline}
+.global-bar.is-clickable,.rank-row.is-clickable{cursor:pointer;padding:3px 4px}
+.global-bar.is-clickable:hover,.rank-row.is-clickable:hover{background:#f4f8fb;border-radius:7px}
+.benchmark-explain{margin-top:11px;padding:10px 12px;border-left:4px solid #2f78bd;background:#f5f9fd;border-radius:5px;font-size:12px;line-height:1.55;color:#44586d}
+.benchmark-explain b{color:#153f67}
+body.dark .official-link-row a{background:#0f1b28;color:#b9dcff;border-color:#38546e}
+body.dark .global-bar.is-clickable:hover,body.dark .rank-row.is-clickable:hover{background:#111c27}
+body.dark .benchmark-explain{background:#0f1b28;color:#cbd8e5;border-color:#6eb0e5}
+</style>
+
+<style id="trainingStandardRefreshFixStyle">
+.training-std-badge{
+  display:inline-flex;align-items:center;margin-left:5px;padding:2px 6px;
+  border-radius:999px;background:#e7f0fb;color:#1b5b98;font-size:10px;font-weight:900;vertical-align:middle
+}
+#trainingStdGuide.training-refreshed{color:#166534;font-weight:700}
+body.dark .training-std-badge{background:#17314a;color:#cce6ff}
+body.dark #trainingStdGuide.training-refreshed{color:#86efac}
+</style>
 </head><body>
 <div class="app"><aside class="sidebar"><div class="brand"><div class="logo">✓</div><div><b id="brandStandard">VDA 6.3</b><small id="brandSubtitle">프로세스 심사 가이드</small></div></div><div class="search"><input id="search" placeholder="조항 검색"></div><div id="menu"></div>
 <div class="finding-side" id="findingSide">
@@ -459,7 +569,108 @@ body,.topbar,.panel,.guide-card,.sidebar,input,textarea,select,.btn{
   <div style="font-size:11px;color:#a9bed6;line-height:1.5;margin-top:7px">PDF·PPTX·DOCX·TXT를 VDA 6.3 또는 IATF 16949 요구사항과 비교합니다.</div>
 </div>
 <div class="sidebar-bottom"><button class="dash-btn" onclick="showDashboard()">⌂ 전체 대시보드</button></div></aside>
-<main class="main"><header class="topbar"><div style="display:flex;align-items:center;gap:10px"><select id="standardSelector" class="btn" style="font-weight:800"><option value="VDA">VDA 6.3</option><option value="IATF">IATF 16949</option></select><h1 id="mainGuideTitle">VDA 6.3 프로세스 심사 가이드</h1></div><div class="actions"><button class="btn" onclick="toggleTheme()">화면 모드</button><button class="btn admin-only" onclick="openClauseModal(true)">+ 조항 추가</button><button class="btn primary admin-only" id="procedureTopBtn" type="button">절차서 분석</button><button class="btn" id="auditSystemTopBtn" type="button" onclick="openAuditSystemModal()" style="border-color:#2563eb;color:#1d4ed8">내부시스템심사</button><button class="btn primary" id="trainingMaterialTopBtn" type="button" onclick="openTrainingMaterialModal()" style="background:#0f766e;border-color:#0f766e;color:#fff">교육자료</button><button class="btn" id="backupBtn" type="button" onclick="backup(); return false;">저장/백업</button><label class="btn admin-only">불러오기<input class="hidden" type="file" id="restoreFile" accept="application/json"></label><button class="btn" id="excelBtn" type="button" onclick="exportCSV(); return false;">Excel</button><button class="btn" id="pdfBtn" type="button" onclick="printPDF(); return false;">PDF 출력</button><span id="modeChip" class="viewer-chip">일반 열람</span><button id="loginBtn" class="btn" type="button" onclick="openAdminLogin()">관리자 로그인</button><button id="logoutBtn" class="btn hidden" type="button" onclick="logoutAdmin()">로그아웃</button></div></header><div id="actionStatus" style="display:none;margin:8px 18px 0;padding:9px 12px;border:1px solid #bfdbfe;background:#eff6ff;color:#1e40af;border-radius:8px;font-size:13px"></div>
+<main class="main">
+<div id="homeView" class="during-home">
+  <div class="home-shell">
+    <div class="home-head">
+      <div>
+        <div class="home-eyebrow">DURING QUALITY MANAGEMENT SYSTEM</div>
+        <h1>DURING 내부시스템심사</h1>
+        <p>내부심사원이 심사 전에 요구사항·일정·부서별 준비 포인트·외부 Audit Trend를 빠르게 확인하는 HOME입니다.</p>
+      </div>
+      <div class="home-user">
+        <span id="homeModeChip" class="viewer-chip">일반 열람</span>
+        <button id="homeLoginBtn" class="btn" type="button" onclick="openAdminLogin()">관리자 로그인</button>
+        <button id="homeLogoutBtn" class="btn hidden" type="button" onclick="logoutAdmin()">로그아웃</button>
+      </div>
+    </div>
+
+    <div class="home-kpis">
+      <div class="home-kpi"><span>VDA 6.3 조항</span><b id="homeVdaClauses">0</b><small>현재 등록 조항</small></div>
+      <div class="home-kpi"><span>IATF 16949 조항</span><b id="homeIatfClauses">0</b><small>현재 등록 조항</small></div>
+      <div class="home-kpi"><span>등록 심사일정</span><b id="homePlanCount">0</b><small>내부시스템심사 계획</small></div>
+      <div class="home-kpi"><span>심사 대상 부서</span><b id="homeDeptCount">0</b><small>계획서 기준</small></div>
+      <div class="home-kpi"><span>연결 프로세스</span><b id="homeProcessCount">0</b><small>계획서 기준</small></div>
+    </div>
+
+    <div class="home-main-grid auditor-home-grid">
+      <section class="home-card home-start">
+        <div class="home-card-head"><div><small>QUICK START</small><h2>심사 기준 선택</h2></div></div>
+        <div class="home-standard-grid">
+          <button class="home-standard" type="button" onclick="enterGuideFromHome('VDA')">
+            <span class="home-standard-code">VDA 6.3</span><strong>프로세스 심사 가이드</strong>
+            <em>등록된 P2~P7 요구사항·이행사례·예상질문을 확인합니다.</em>
+          </button>
+          <button class="home-standard" type="button" onclick="enterGuideFromHome('IATF')">
+            <span class="home-standard-code">IATF 16949</span><strong>품질경영시스템 심사 가이드</strong>
+            <em>등록된 4~10장 요구사항·영문요구사항·예상질문을 확인합니다.</em>
+          </button>
+        </div>
+        <div class="home-actions-row">
+          <button class="btn primary" type="button" onclick="openAuditSystemModal()">내부시스템심사 계획·결과</button>
+          <button class="btn" type="button" onclick="openTrainingMaterialModal()">교육자료</button>
+          <button class="btn admin-only" type="button" onclick="document.getElementById('procedureTopBtn').click()">절차서 분석</button>
+        </div>
+      </section>
+
+      <section class="home-card">
+        <div class="home-card-head"><div><small>NEXT AUDIT</small><h2>예정 내부심사 일정</h2></div></div>
+        <div id="homeNextAudits" class="home-next-audits"></div>
+      </section>
+    </div>
+
+    <div class="home-lower-grid auditor-focus-grid">
+      <section class="home-card">
+        <div class="home-card-head"><div><small>GLOBAL BENCHMARK</small><h2>IATF 글로벌 Major NC 주요 조항</h2></div><span class="source-chip">IATF Global Oversight</span></div>
+        <p class="home-note">전 세계 IATF 인증심사에서 발행된 Major 부적합 중 상위 조항입니다. DURING 내부 지적사항이 아니라 <b>글로벌 외부 Benchmark</b>이며, 내부심사 시 중점 확인영역을 이해하는 참고자료입니다.</p>
+        <div class="official-link-row">
+          <a href="https://www.iatfglobaloversight.org/statistics/" target="_blank" rel="noopener">IATF 공식 Statistics 보기</a>
+          <a href="https://www.iatfglobaloversight.org/wp/wp-content/uploads/2025/01/2024-11_TopTenMajorNC-12MonthMD-EN.pdf" target="_blank" rel="noopener">Major NC 공식 PDF 열기</a>
+        </div>
+        <div id="iatfGlobalMajorBars" class="global-bars"></div>
+        <div id="iatfMajorExplain" class="benchmark-explain">항목을 클릭하면 해당 조항이 무엇을 의미하는지 한글 설명을 볼 수 있습니다.</div>
+        <div class="source-note">Source: IATF Global Oversight · Top Ten Major Nonconformities · 2024-11 · 12-month data</div>
+      </section>
+
+      <section class="home-card">
+        <div class="home-card-head"><div><small>GLOBAL BENCHMARK</small><h2>IATF 글로벌 Minor NC 상위 영역</h2></div><span class="source-chip">Official ranking</span></div>
+        <p class="home-note">전 세계 IATF 인증심사에서 반복적으로 Minor 부적합이 발생하는 상위 조항입니다. 현장 실행, 관리계획, 설비보전, 표준작업 등 내부심사 시 놓치기 쉬운 영역을 이해하는 용도입니다.</p>
+        <div class="official-link-row">
+          <a href="https://www.iatfglobaloversight.org/statistics/" target="_blank" rel="noopener">IATF 공식 Statistics 보기</a>
+          <a href="https://www.iatfglobaloversight.org/wp/wp-content/uploads/2025/02/2025-01_TopTenMinorNC-12MonthMD-EN.pdf" target="_blank" rel="noopener">Minor NC 공식 PDF 열기</a>
+        </div>
+        <div id="iatfGlobalMinorRank" class="rank-list"></div>
+        <div id="iatfMinorExplain" class="benchmark-explain">항목을 클릭하면 해당 조항이 무엇을 의미하는지 한글 설명을 볼 수 있습니다.</div>
+        <div class="source-note">Source: IATF Global Oversight · Top Ten Minor Nonconformities · 2025-01 · 12-month data</div>
+      </section>
+    </div>
+
+    <div class="home-lower-grid auditor-focus-grid">
+      <section class="home-card">
+        <div class="home-card-head"><div><small>VDA 6.3 FOCUS MAP</small><h2>현재 등록된 P1~P7 요구사항 구성</h2></div></div>
+        <p class="home-note">VDA 글로벌 NC 순위를 임의로 만들지 않고, 현재 시스템의 VDA 6.3 저장 데이터만 읽어 P1~P7별 등록 요구사항 수를 표시합니다. 등록되지 않은 항목은 0으로 표시합니다.</p>
+        <div id="homeVdaFocusBars" class="global-bars"></div>
+      </section>
+
+      <section class="home-card">
+        <div class="home-card-head"><div><small>DEPARTMENT PREPARATION</small><h2>부서별 심사 준비 포인트</h2></div></div>
+        <p class="home-note">내부심사 계획서에 등록한 부서·프로세스·절차서를 기준으로 보여줍니다.</p>
+        <div id="homeDeptPreparation" class="dept-prep-list"></div>
+      </section>
+    </div>
+
+    <section class="home-card home-workflow-card">
+      <div class="home-card-head"><div><small>WORKFLOW</small><h2>DURING 내부심사 운영 흐름</h2></div></div>
+      <div class="home-flow">
+        <div><b>01</b><strong>심사계획</strong><span>부서·프로세스·일정 확인</span></div><i>→</i>
+        <div><b>02</b><strong>요건 학습</strong><span>요구사항·이행사례·영문 확인</span></div><i>→</i>
+        <div><b>03</b><strong>심사 준비</strong><span>조항별 예상질문·증빙 준비</span></div><i>→</i>
+        <div><b>04</b><strong>현장 심사</strong><span>객관적 증거와 실제 실행 확인</span></div><i>→</i>
+        <div><b>05</b><strong>결과 관리</strong><span>별도 결과화면에서 지적·종결 관리</span></div>
+      </div>
+    </section>
+  </div>
+</div><header class="topbar"><div style="display:flex;align-items:center;gap:10px"><select id="standardSelector" class="btn" style="font-weight:800"><option value="VDA">VDA 6.3</option><option value="IATF">IATF 16949</option></select><h1 id="mainGuideTitle">VDA 6.3 프로세스 심사 가이드</h1></div><div class="actions"><button class="btn" id="homeTopBtn" type="button" onclick="showHomeView()">HOME</button><button class="btn primary" id="dataEmbeddedHtmlBtn" type="button" onclick="exportHtmlWithCurrentData()" style="background:#0f766e;border-color:#0f766e;color:#fff">DATA 포함 HTML</button><button class="btn" id="dbJsonBackupBtn" type="button" onclick="downloadDatabaseJson()" style="border-color:#7c3aed;color:#6d28d9;font-weight:800">DB JSON 백업</button><label class="btn" for="dbJsonRestoreFile" style="border-color:#7c3aed;color:#6d28d9;font-weight:800;cursor:pointer">DB JSON 복원</label><input id="dbJsonRestoreFile" type="file" accept=".json,application/json" style="display:none" onchange="restoreDatabaseJsonFile(this.files[0])"><button class="btn" onclick="toggleTheme()">화면 모드</button><button class="btn admin-only" onclick="openClauseModal(true)">+ 조항 추가</button><button class="btn primary admin-only" id="procedureTopBtn" type="button">절차서 분석</button><button class="btn" id="auditSystemTopBtn" type="button" onclick="openAuditSystemModal()" style="border-color:#2563eb;color:#1d4ed8">내부시스템심사</button><button class="btn primary" id="trainingMaterialTopBtn" type="button" onclick="openTrainingMaterialModal()" style="background:#0f766e;border-color:#0f766e;color:#fff">교육자료</button><button class="btn" id="backupBtn" type="button" onclick="backup(); return false;">저장/백업</button><label class="btn admin-only">불러오기<input class="hidden" type="file" id="restoreFile" accept="application/json"></label><button class="btn" id="excelBtn" type="button" onclick="exportCSV(); return false;">Excel</button><button class="btn" id="pdfBtn" type="button" onclick="printPDF(); return false;">PDF 출력</button><span id="modeChip" class="viewer-chip">일반 열람</span><button id="loginBtn" class="btn" type="button" onclick="openAdminLogin()">관리자 로그인</button><button id="logoutBtn" class="btn hidden" type="button" onclick="logoutAdmin()">로그아웃</button></div></header><div id="actionStatus" style="display:none;margin:8px 18px 0;padding:9px 12px;border:1px solid #bfdbfe;background:#eff6ff;color:#1e40af;border-radius:8px;font-size:13px"></div>
 <div class="content"><div class="crumb" id="crumb"></div>
 <div id="readonlyNotice" class="readonly-note">일반 열람 모드입니다. 조항 내용과 평가 기준은 조회할 수 있으며, 수정·삭제·추가·평가 입력은 관리자 로그인 후 가능합니다.</div><section class="panel" id="detailPanel"><div class="title-row"><div><span class="badge" id="clauseId"></span><h2 id="clauseTitle"></h2></div><div class="actions"><button class="btn warn admin-only" onclick="openClauseModal(false)">수정</button><button class="btn danger admin-only" id="deleteClauseBtn" type="button" onclick="requestDelete(currentModule,currentClause); return false;">삭제</button></div></div>
 <div class="two-col"><div class="guide-card req"><h3>◉ 평가 관련 최소 요구사항</h3><div class="list" id="minimumList"></div><div class="addline admin-only"><textarea id="minimumInput" rows="3" placeholder="최소 요구사항 추가&#10;Shift+Enter : 줄바꿈 / Enter : 추가"></textarea><button class="btn primary" onclick="addItem('minimum')">추가</button></div></div><div class="guide-card example" id="rightGuideCard"><h3 id="rightGuideTitle">★ 이행을 위한 사례</h3><div class="list" id="exampleList"></div><div class="addline admin-only"><textarea id="exampleInput" rows="3" placeholder="이행 사례 추가&#10;Shift+Enter : 줄바꿈 / Enter : 추가"></textarea><button class="btn warn" id="rightGuideAddBtn" onclick="addRightGuideItem()">추가</button></div></div></div></section>
@@ -541,7 +752,16 @@ body,.topbar,.panel,.guide-card,.sidebar,input,textarea,select,.btn{
       <div class="audit-table-wrap"><table class="audit-table" style="min-width:1900px"><thead><tr><th style="width:34px"><input type="checkbox" id="auditFindingCheckAll" onchange="toggleAuditFindingChecks(this.checked)"></th><th>No</th><th>기준</th><th>부서</th><th>9개 프로세스</th><th>조항</th><th>지적사항</th><th>구분</th><th>담당자</th><th>완료예정일</th><th>개선대책</th><th>유효성 확인</th><th>상태</th><th>종결일</th><th>관리</th></tr></thead><tbody id="auditClosureBody"></tbody></table></div>
     </div>
     <div class="audit-pane" id="auditReportPane">
-      <div class="audit-report-actions"><button class="btn primary" type="button" onclick="downloadAuditWorkbook('all')">전체 심사보고서 Excel</button><button class="btn" type="button" onclick="downloadAuditWorkbook('plan')">심사계획 Excel</button><button class="btn" type="button" onclick="downloadAuditWorkbook('result')">심사결과 Excel</button><button class="btn" type="button" onclick="downloadAuditWorkbook('nc')">부적합보고서 Excel</button><button class="btn" type="button" onclick="downloadAuditWorkbook('close')">종결보고서 Excel</button><button class="btn" type="button" onclick="downloadOriginalAuditTemplate()">첨부 원본양식 Excel</button></div><div id="auditDownloadEnv" class="audit-download-env"></div><div id="auditDownloadStatus" class="audit-download-status"></div>
+      
+<div class="audit-report-actions">
+  <button class="btn primary" type="button" onclick="generateHtmlAuditReport('all')">전체 심사보고서 HTML</button>
+  <button class="btn" type="button" onclick="generateHtmlAuditReport('plan')">심사계획 HTML</button>
+  <button class="btn" type="button" onclick="generateHtmlAuditReport('result')">심사결과 HTML</button>
+  <button class="btn" type="button" onclick="generateHtmlAuditReport('nc')">부적합보고서 HTML</button>
+  <button class="btn" type="button" onclick="generateHtmlAuditReport('close')">종결보고서 HTML</button>
+</div>
+<div id="auditHtmlReportStatus" class="audit-download-status"></div>
+<div id="auditDownloadEnv" class="audit-download-env"></div><div id="auditDownloadStatus" class="audit-download-status"></div>
       <div class="audit-note"><b>생성 Sheet</b><br>① 내부시스템심사계획서 → 첨부 양식의 제목/로고/기본구성 반영<br>② 요건별심사결과 → 선택한 IATF 16949 또는 VDA 6.3의 조항별 심사내용<br>③ 부적합보고서 → 등록된 지적사항, 개선대책, 완료계획<br>④ 종결보고서 → Major/Minor/종결/미종결 현황 및 유효성 확인<br>⑤ 원본지적사항 → 추적성 확보용 전체 데이터</div>
     </div>
   </div>
@@ -604,48 +824,111 @@ body,.topbar,.panel,.guide-card,.sidebar,input,textarea,select,.btn{
 
 <div class="modal" id="trainingMaterialModal">
   <div class="dialog" style="max-width:980px">
-    <h3>VDA 6.3 / IATF 16949 교육자료 다운로드</h3>
+    <h3>VDA 6.3 / IATF 16949 교육자료</h3>
     <p class="small">현재 등록된 요건 데이터를 기준으로 교육용 PPT를 생성합니다. 기존 요건/지적사항/심사계획 데이터는 변경하지 않습니다.</p>
     <div class="field">
       <label>교육 기준</label>
-      <select id="trainingStd">
-        <option value="VDA">VDA 6.3</option>
-        <option value="IATF">IATF 16949</option>
-      </select>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <select id="trainingStd" style="min-width:160px">
+          <option value="VDA">VDA 6.3</option>
+          <option value="IATF">IATF 16949</option>
+        </select>
+        <button class="btn primary" type="button" onclick="refreshTrainingStandard()">선택 기준 새로고침</button>
+        <span id="trainingStdGuide" style="font-size:12px;color:#64748b">기준 변경 후 새로고침하면 현재 교육자료 유형으로 다시 생성됩니다.</span><div id="trainingStdModules" style="width:100%;font-size:11px;color:#64748b;margin-top:3px"></div><div id="trainingPlanScopeNote" style="width:100%;font-size:11px;color:#7c3aed;margin-top:2px">부서별 교육자료는 선택 기준과 동일한 내부심사 계획만 사용합니다.</div>
+      </div>
     </div>
     <div class="training-grid">
       <div class="training-card">
-        <h3>요건별 교육자료</h3>
-        <p>각 조항별 핵심 요구사항, 주요 확인 포인트, 예상질문을 중심으로 PPT를 생성합니다.</p>
+        <h3>요건별 교육자료 <span class="training-std-badge" data-training-badge>VDA 6.3</span></h3>
+        <p id="trainingRequirementDesc">VDA 6.3 P1~P7 등록 요구사항·이행사례·예상질문을 기준으로 HTML 교육자료를 생성합니다.</p>
         <div class="training-actions">
-          <button class="btn primary" type="button" onclick="downloadTrainingPpt('requirement')">PPT 생성</button>
+          <button class="btn primary" type="button" onclick="generateTrainingHtml('requirement')">HTML 생성</button>
         </div>
       </div>
       <div class="training-card">
-        <h3>부서별 교육자료</h3>
-        <p>품질/생산/개발/구매/영업/설비/검사/출하 등 부서별로 알아야 할 사항을 정리합니다.</p>
+        <h3>부서별 교육자료 <span class="training-std-badge" data-training-badge>VDA 6.3</span></h3>
+        <p id="trainingDepartmentDesc">VDA 6.3 기준과 현재 심사계획의 부서·프로세스·절차서를 연결해 교육자료를 구성합니다.</p>
         <div class="training-actions">
-          <button class="btn primary" type="button" onclick="downloadTrainingPpt('department')">PPT 생성</button>
+          <button class="btn primary" type="button" onclick="generateTrainingHtml('department')">HTML 생성</button>
         </div>
       </div>
       <div class="training-card">
-        <h3>내부심사원 교육자료</h3>
-        <p>심사 접근방법, 객관적 증거 확인, 부적합 분류, 보고서 작성 기준을 포함합니다.</p>
+        <h3>내부심사원 교육자료 <span class="training-std-badge" data-training-badge>VDA 6.3</span></h3>
+        <p id="trainingAuditorDesc">VDA 6.3 프로세스 요소별 요구사항·이행사례·예상질문을 기반으로 내부심사원 역량자료를 제공합니다.</p>
         <div class="training-actions">
-          <button class="btn primary" type="button" onclick="downloadTrainingPpt('auditor')">PPT 생성</button>
+          <button class="btn primary" type="button" onclick="generateTrainingHtml('auditor')">HTML 생성</button>
         </div>
       </div>
       <div class="training-card">
-        <h3>전체 통합 교육자료</h3>
-        <p>요건별·부서별·심사원 교육 내용을 하나의 PPT로 통합 생성합니다.</p>
+        <h3>전체 통합 교육자료 <span class="training-std-badge" data-training-badge>VDA 6.3</span></h3>
+        <p id="trainingAllDesc">선택한 VDA 6.3 기준으로 요건별·부서별·내부심사원 교육자료를 하나로 통합합니다.</p>
         <div class="training-actions">
-          <button class="btn primary" type="button" onclick="downloadTrainingPpt('all')">PPT 생성</button>
+          <button class="btn primary" type="button" onclick="generateTrainingHtml('all')">HTML 생성</button>
         </div>
       </div>
     </div>
     <div id="trainingDownloadStatus" class="download-manual-box" style="display:none"></div>
     <div class="dialog-actions">
       <button class="btn" type="button" onclick="closeTrainingMaterialModal()">닫기</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" id="htmlReportModal">
+  <div class="dialog" id="htmlReportDialog" style="max-width:96vw;width:1400px;height:92vh;display:flex;flex-direction:column">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+      <h3 style="margin:0">내부시스템심사 HTML 보고서</h3>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn primary" type="button" onclick="openHtmlReportWindow()">새 창에서 열기</button>
+        <button class="btn" type="button" onclick="toggleHtmlReportMaximize()">화면 최대화</button>
+        <button class="btn" type="button" onclick="saveHtmlReportFile()">HTML 파일 저장</button>
+        <button class="btn" type="button" onclick="printHtmlReport()">인쇄 / PDF</button>
+        <button class="btn" type="button" onclick="copyHtmlReportSource()">HTML 코드 복사</button>
+        <button class="btn" type="button" onclick="closeHtmlReportModal()">닫기</button>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:8px 10px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;color:#1e3a8a;font-size:12px">
+      다운로드 없이 바로 열람할 수 있습니다. 새 창에서 연 뒤 Ctrl+S로 HTML 저장 또는 인쇄→PDF로 보관할 수 있습니다.
+    </div>
+    <iframe id="htmlReportFrame" style="flex:1;width:100%;margin-top:10px;border:1px solid #cbd5e1;border-radius:8px;background:#fff"></iframe>
+  </div>
+</div>
+
+
+<div class="modal" id="trainingHtmlModal">
+  <div class="dialog" id="trainingHtmlDialog" style="max-width:96vw;width:1400px;height:92vh;display:flex;flex-direction:column">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+      <h3 style="margin:0">교육자료 HTML</h3>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn primary" type="button" onclick="openTrainingHtmlWindow()">새 창에서 열기</button>
+        <button class="btn" type="button" onclick="toggleTrainingHtmlMaximize()">화면 최대화</button>
+        <button class="btn" type="button" onclick="saveTrainingHtmlFile()">HTML 파일 저장</button>
+        <button class="btn" type="button" onclick="printTrainingHtml()">인쇄 / PDF</button>
+        <button class="btn" type="button" onclick="closeTrainingHtmlModal()">닫기</button>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:8px 10px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;color:#1e3a8a;font-size:12px">
+      다운로드 없이 바로 열람할 수 있습니다. 필요 시 새 창에서 Ctrl+S로 HTML 저장하거나 인쇄→PDF로 보관할 수 있습니다.
+    </div>
+    <iframe id="trainingHtmlFrame" style="flex:1;width:100%;margin-top:10px;border:1px solid #cbd5e1;border-radius:8px;background:#fff"></iframe>
+  </div>
+</div>
+
+
+<div class="modal" id="dataEmbeddedExportModal">
+  <div class="dialog" style="max-width:760px">
+    <h3>현재 DATA 포함 HTML 다운로드</h3>
+    <p style="font-size:13px;line-height:1.6;color:#475569">
+      현재 브라우저에 저장된 VDA 6.3 / IATF 16949 / 지적사항 / 내부시스템심사 / 절차서 분석 DATA를 HTML 파일 자체에 포함합니다.
+    </p>
+    <div id="dataEmbeddedSummary" style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0"></div>
+    <div style="padding:10px 12px;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:8px;color:#065f46;font-size:12px;line-height:1.55">
+      다운로드한 HTML을 다른 PC나 다른 폴더에서 열어도 포함된 DATA를 복원할 수 있습니다.
+    </div>
+    <div class="dialog-actions">
+      <button class="btn" type="button" onclick="closeDataEmbeddedExportModal()">취소</button>
+      <button class="btn primary" type="button" onclick="performDataEmbeddedHtmlExport()">현재 DATA 포함 HTML 저장</button>
     </div>
   </div>
 </div>
@@ -1425,6 +1708,7 @@ function renderScores(){const root=document.getElementById('scoreButtons'),c=get
 function updateMetrics(){const c=getClause(),m=getModule();document.getElementById('metricClause').textContent=c.na?'N/A':(c.score==null?'-':c.score+'점');const active=m.clauses.filter(x=>!x.na&&x.score!=null);const mp=active.length?active.reduce((a,x)=>a+x.score,0)/(active.length*10)*100:null;const all=modules().flatMap(x=>x.clauses).filter(x=>!x.na&&x.score!=null);const tp=all.length?all.reduce((a,x)=>a+x.score,0)/(all.length*10)*100:null;document.getElementById('metricModule').textContent=mp==null?'-':mp.toFixed(1)+'%';document.getElementById('metricTotal').textContent=tp==null?'-':tp.toFixed(1)+'%';let grade='-';if(tp!=null)grade=tp>=90?'A':tp>=80?'B':'C';if(all.some(x=>x.star&&x.score===0))grade='C';document.getElementById('metricGrade').textContent=grade}
 
 const VDA_QUESTION_BANK={
+ 'P1':['P1 관련 등록 요구사항의 목적과 적용범위를 설명해 주십시오.','P1에서 요구하는 관리체계와 책임이 실제로 어떻게 운영되는지 보여주십시오.','P1 요구사항과 연계되는 절차·기록·현장 실행의 객관적 증거를 보여주십시오.','P1 관련 리스크와 대응조치를 설명해 주십시오.','P1 요구사항이 변경될 경우 어떤 절차로 검토·승인·전개합니까?','P1 관련 담당자의 역량 및 역할이 명확합니까?','최근 P1 관련 이행기록을 보여주십시오.','P1 요구사항 미충족 시 에스컬레이션 또는 조치 기준은 무엇입니까?','P1 관련 내용을 타 부서/프로세스와 어떻게 연계합니까?','P1 요구사항의 유효성을 어떤 방법으로 확인합니까?'],
  'P2':['프로젝트 요구사항과 고객 요구사항이 프로젝트 계획에 완전하게 반영되어 있습니까?','프로젝트 조직, 책임과 의사결정 권한이 명확히 지정되어 있습니까?','프로젝트 일정의 주요 마일스톤과 고객 일정이 일치하며 지연 리스크를 관리합니까?','필요 인원·설비·시험·측정·금형 등 자원이 적기에 계획되어 있습니까?','프로젝트 리스크를 정기적으로 평가하고 조치상태를 추적합니까?','변경사항이 일정·원가·품질·공급망에 미치는 영향을 평가하고 승인합니까?','고객과 내부 부서 간 프로젝트 정보 및 미결사항의 의사소통 체계가 있습니까?','프로젝트 단계별 승인/게이트 결과와 미결사항 종결 증빙을 보여주십시오.','양산이관 전 제품·공정 성숙도를 어떤 기준으로 평가합니까?','과거 프로젝트의 Lessons Learned가 신규 프로젝트에 반영된 사례를 보여주십시오.'],
  'P3':['제품 및 공정 개발 요구사항이 고객·법규·내부 요구와 연결되어 있습니까?','개발 입력사항의 완전성과 모순 여부를 누가 검토하고 승인합니까?','특별특성과 중요 기능이 설계 및 공정개발에 일관되게 반영되어 있습니까?','DFMEA/PFMEA 등 리스크 분석 결과가 실제 설계·공정 대책으로 연결됩니까?','시험·검증·유효성확인 계획과 합격기준이 명확합니까?','시제품/선행품 문제점이 양산 설계와 공정에 피드백된 증빙을 보여주십시오.','개발 변경 시 영향평가와 고객 승인 필요성을 어떻게 판단합니까?','공급업체 개발품과 구매품의 성숙도를 어떻게 확인합니까?','측정·시험 방법과 검사장비가 양산 전 준비되고 적합성이 검증됩니까?','제품·공정 개발 완료 후 양산이관 승인 기준과 미결사항 관리방법을 보여주십시오.'],
  'P4':['공급업체 선정 기준에 품질능력, 기술능력, 납기 및 리스크가 반영됩니까?','신규 공급업체 또는 신규 부품 승인 전에 품질능력을 어떻게 검증합니까?','구매사양에 도면, 규격, 특별특성, 검사 및 변경통보 요구가 명확합니까?','공급업체 성과를 품질·납기·고객영향 지표로 정기 평가합니까?','공급업체 부적합 발생 시 봉쇄, 원인분석, 시정조치와 유효성 확인을 추적합니까?','공급업체 변경 또는 하위 공급망 변경을 사전에 통제합니까?','입고검사 수준이 공급업체 성과와 부품 리스크에 따라 조정됩니까?','공급업체 개발대상 선정과 개선계획의 진행상태를 보여주십시오.','외주공정의 공정능력·추적성·검사 결과를 어떻게 보증합니까?','최근 공급업체 문제 1건이 내부 관리계획/FMEA/검사기준에 반영된 사례를 보여주십시오.'],
@@ -1432,16 +1716,19 @@ const VDA_QUESTION_BANK={
  'P6':['현장에 최신 작업표준·도면·관리계획이 제공되고 실제 작업과 일치합니까?','특별특성의 공정조건, 검사주기와 이상조치 기준이 준수됩니까?','작업자의 교육·숙련도·자격이 담당 공정에 적합합니까?','설비·금형·치공구의 상태와 예방보전이 제품품질을 보장합니까?','공정 중 불량품과 의심품이 명확히 식별·격리되어 혼입을 방지합니까?','제품 및 LOT 추적성이 원재료부터 출하까지 필요한 수준으로 유지됩니까?','공정변경·설비변경·작업자변경 시 재검증/초품 승인 기준이 있습니까?','공정능력 및 품질데이터의 이상추세를 분석하고 즉시 조치합니까?','재작업/수리 작업은 승인된 기준으로 수행되고 재검사됩니까?','최근 공정 이상 1건의 발생-봉쇄-원인-대책-유효성 확인을 현장에서 추적해 주십시오.'],
  'P7':['고객 요구와 납품 조건을 지속적으로 모니터링하고 충족하고 있습니까?','고객 불만·반품·클레임의 접수부터 종결까지 책임과 기한이 관리됩니까?','고객 불만 발생 시 즉시 봉쇄와 영향범위 확인이 수행됩니까?','근본원인 분석과 시정조치의 유효성을 어떤 기준으로 검증합니까?','고객 Scorecard 및 품질·납기 성과의 악화추세에 대한 조치가 있습니까?','서비스/필드 문제와 보증 데이터가 내부 품질개선에 반영됩니까?','고객 요구 변경과 CSR 최신본이 관련 부서에 적시에 전개됩니까?','고객 특채·일탈승인 조건이 제품 및 출하에 정확히 반영됩니까?','반복 고객불만의 재발방지 및 유사제품 수평전개 사례를 보여주십시오.','고객만족 향상을 위해 최근 수행한 개선활동과 정량적 효과를 보여주십시오.']
 };
-function vdaQuestionGroup(c){
-  const id=String(c.id||'').toUpperCase();
-  const m=id.match(/P([2-7])/);
+function vdaQuestionGroup(c,moduleId){
+  const id=String(c?.id||'').toUpperCase();
+  let m=id.match(/\bP\s*([1-7])\b/);
   if(m)return 'P'+m[1];
-  const mod=String(currentModule||'').toUpperCase();
-  const mm=mod.match(/P([2-7])/);
-  return mm?'P'+mm[1]:'P6';
+
+  const mid=String(moduleId||c?.moduleId||'').toUpperCase();
+  m=mid.match(/\bP\s*([1-7])\b/);
+  if(m)return 'P'+m[1];
+
+  return 'P6';
 }
-function vdaGeneratedQuestions(c){
-  const base=(VDA_QUESTION_BANK[vdaQuestionGroup(c)]||VDA_QUESTION_BANK.P6).slice();
+function vdaGeneratedQuestions(c,moduleId){
+  const base=(VDA_QUESTION_BANK[vdaQuestionGroup(c,moduleId)]||VDA_QUESTION_BANK.P6).slice();
   const req=(c.minimum||[]).flatMap(x=>String(x).split(/\n+/)).map(x=>x.trim()).filter(Boolean);
   const specific=[];
   req.slice(0,3).forEach(x=>specific.push(`${c.id} 요구사항 “${x.slice(0,90)}”의 실제 이행상태와 객관적 증거를 보여주십시오.`));
@@ -1568,6 +1855,146 @@ function printPDF(){
     setTimeout(()=>{try{frame.contentWindow.focus();frame.contentWindow.print()}catch(e){setActionStatus('인쇄창 실행 실패: '+e.message,'error');alert('인쇄창을 열지 못했습니다. 브라우저에서 인쇄 권한을 확인해 주세요.')}},500);
   }catch(e){console.error(e);setActionStatus('PDF 출력 오류: '+e.message,'error')}
 }
+
+function homeFlatClauses(std){
+  const d=std==='IATF'?(typeof loadIatfData==='function'?loadIatfData():[]):(typeof data!=='undefined'?data:[]);
+  return (d||[]).reduce((n,m)=>n+(m.clauses||[]).length,0);
+}
+function showHomeView(){
+  document.body.classList.add('home-mode');
+  if(window.__duringHomeReady===true){
+    try{renderHomeDashboard()}catch(e){console.warn('HOME render:',e)}
+  }
+  window.scrollTo(0,0);
+}
+function leaveHomeView(){document.body.classList.remove('home-mode')}
+function enterGuideFromHome(std){
+  leaveHomeView();
+  setStandard(std);
+}
+
+function renderHomeDashboard(){
+  if(window.__duringHomeReady!==true)return;
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};
+  set('homeVdaClauses',homeFlatClauses('VDA'));
+  set('homeIatfClauses',homeFlatClauses('IATF'));
+
+  const plans=(typeof auditManager!=='undefined'&&auditManager.plan)?auditManager.plan:[];
+  set('homePlanCount',plans.length);
+  const deptNames=new Set(),processNames=new Set();
+  plans.forEach(p=>{
+    String(p.team||'').split(/[/,\n]/).map(x=>x.trim()).filter(Boolean).forEach(x=>deptNames.add(x));
+    String(p.process||'').split(/[/,\n]/).map(x=>x.trim()).filter(Boolean).forEach(x=>processNames.add(x));
+  });
+  set('homeDeptCount',deptNames.size);set('homeProcessCount',processNames.size);
+
+  // Upcoming audits from registered plan only
+  const next=document.getElementById('homeNextAudits');
+  if(next){
+    const today=new Date(); today.setHours(0,0,0,0);
+    const rows=plans.filter(p=>p.date).slice().sort((a,b)=>String(a.date).localeCompare(String(b.date)));
+    const future=rows.filter(p=>{const d=new Date(p.date+'T00:00:00');return !isNaN(d)&&d>=today}).slice(0,5);
+    const show=future.length?future:rows.slice(0,5);
+    next.innerHTML=show.length?show.map(p=>`<div class="next-audit-row"><b>${escapeHtml(p.date||'')} ${escapeHtml(p.time||'')}</b><span>${escapeHtml(p.team||'부서 미입력')} · ${escapeHtml(p.process||'프로세스 미입력')}</span><small>${escapeHtml(p.procedure||'절차서 미입력')} · ${escapeHtml(p.auditTeam||'심사팀 미입력')}</small></div>`).join(''):'<div class="empty-note">등록된 심사일정이 없습니다.</div>';
+  }
+
+  // Official IATF Global Oversight benchmark.
+  // Major: 2024-11 Top Ten Major NC, 12-month data.
+  const majorData=[
+    ['10.2.3','문제해결','Problem solving',10.07,'문제 발생 시 구조화된 문제해결, 근본원인 분석, 재발방지와 유효성 확인이 적절히 수행되는지를 확인하는 요구사항입니다.'],
+    ['10.2.1','부적합 및 시정조치','Nonconformity and corrective action',5.64,'부적합 발생 시 즉시 조치하고 영향을 통제하며, 원인 제거·시정조치·효과 확인까지 수행되는지를 확인합니다.'],
+    ['8.3.5.2','제조공정 설계 출력','Manufacturing process design output',4.34,'공정흐름, PFMEA, 관리계획, 작업표준 등 제조공정 설계 결과물이 양산에 필요한 형태로 완전하게 산출되는지를 확인합니다.'],
+    ['8.5.1.1','관리계획서','Control plan',3.13,'Control Plan이 실제 공정, 특별특성, 검사방법·주기, 이상반응계획과 일치하고 최신 상태인지 확인합니다.'],
+    ['7.1.5.1.1','측정시스템분석','Measurement systems analysis',3.11,'검사·측정에 사용하는 측정시스템이 의도된 용도에 적합한지 MSA를 통해 검증하는지를 확인합니다.'],
+    ['6.1.2.3','비상대응계획','Contingency plans',3.04,'설비고장, 공급중단, 인력부족, IT 장애 등 비상상황에 대해 계획·시험·복구체계가 준비되어 있는지 확인합니다.'],
+    ['8.5.1','생산 및 서비스 제공의 관리','Control of production and service provision',2.95,'생산이 관리된 조건에서 수행되고 작업표준·설비·공정조건·검사 등이 통제되는지를 확인합니다.'],
+    ['8.5.1.5','전사적 생산보전','Total productive maintenance',2.71,'예방·예지보전, 고장관리, 예비품, 보전목표 등이 공정 품질을 유지할 수준으로 관리되는지를 확인합니다.'],
+    ['9.1.1.1','제조공정 모니터링 및 측정','Monitoring and measurement of manufacturing processes',2.56,'공정능력, 품질지표, 특별특성 등 제조공정 성과를 지속적으로 모니터링하고 이상 시 조치하는지를 확인합니다.'],
+    ['7.1.5.2.1','교정/검증 기록','Calibration/verification records',2.39,'계측기의 교정·검증상태, 기준기 추적성, 이상 계측기 사용 시 영향평가 등 관련 기록이 적절히 유지되는지를 확인합니다.']
+  ];
+  const majorRoot=document.getElementById('iatfGlobalMajorBars');
+  if(majorRoot){
+    const max=Math.max(...majorData.map(x=>x[3]));
+    majorRoot.innerHTML=majorData.map((x,i)=>`<div class="global-bar is-clickable" data-major-index="${i}" title="클릭하여 설명 보기"><label><b>${x[0]}</b> · ${x[1]} (${x[2]})</label><div class="track"><div class="fill" style="width:${Math.round(x[3]/max*100)}%"></div></div><b>${x[3].toFixed(2)}%</b></div>`).join('');
+    majorRoot.querySelectorAll('[data-major-index]').forEach(el=>el.onclick=()=>{
+      const x=majorData[Number(el.dataset.majorIndex)];
+      const box=document.getElementById('iatfMajorExplain');
+      if(box)box.innerHTML=`<b>${x[0]} · ${escapeHtml(x[1])} (${escapeHtml(x[2])})</b><br>${escapeHtml(x[4])}`;
+    });
+  }
+
+  // Minor: 2025-01 Top Ten Minor NC, official ranking.
+  const minorData=[
+    ['8.5.1.5','전사적 생산보전','Total productive maintenance','설비 예방·예지보전, 고장·예비품·보전목표가 실제 생산 안정성과 연결되는지 확인합니다.'],
+    ['8.3.5.2','제조공정 설계 출력','Manufacturing process design output','PFMEA, 공정흐름, 관리계획, 작업표준 등 제조공정 설계 결과물의 완전성과 상호 연계를 확인합니다.'],
+    ['8.5.1.1','관리계획서','Control plan','관리계획이 실제 공정과 일치하고 특별특성, 검사방법·주기, 반응계획이 빠짐없이 반영되는지 확인합니다.'],
+    ['6.2.2.1','품질목표 및 달성계획 – 보충','Quality objectives and planning to achieve them – supplemental','품질목표가 고객 요구와 경영계획에 연결되고 담당자·일정·성과 모니터링이 명확한지를 확인합니다.'],
+    ['8.5.1.3','작업 셋업 검증','Verification of job set-ups','금형교체·셋업 변경 후 초품검증과 설정조건 확인이 규정대로 수행되는지 확인합니다.'],
+    ['8.5.1.2','표준화 작업 – 작업자 지침 및 시각표준','Standardised work – operator instructions and visual standards','현장 작업표준과 시각표준이 최신이며 작업자가 이해할 수 있고 실제 작업과 일치하는지 확인합니다.'],
+    ['10.2.4','오류방지','Error-proofing','Poka-Yoke 등 오류방지 장치의 선정, 검증, 주기점검 및 실패 시 반응계획을 확인합니다.'],
+    ['8.3.3.3','특별특성','Special characteristics','고객 및 내부 특별특성이 도면, FMEA, 관리계획, 작업표준, 검사기준에 일관되게 전개되는지 확인합니다.'],
+    ['7.1.5.3.1','사내 시험실','Internal laboratory','사내 시험실의 범위, 시험방법, 인원 역량, 장비 및 기록 관리가 요구사항에 적합한지 확인합니다.'],
+    ['8.5.1','생산 및 서비스 제공의 관리','Control of production and service provision','생산 및 서비스 제공이 관리된 조건에서 수행되고 관련 기준·설비·인원·검사가 적절히 통제되는지 확인합니다.']
+  ];
+  const minorRoot=document.getElementById('iatfGlobalMinorRank');
+  if(minorRoot){
+    minorRoot.innerHTML=minorData.map((x,i)=>`<div class="rank-row is-clickable" data-minor-index="${i}" title="클릭하여 설명 보기"><span class="rank">${i+1}</span><code>${x[0]}</code><span>${x[1]} (${x[2]})</span></div>`).join('');
+    minorRoot.querySelectorAll('[data-minor-index]').forEach(el=>el.onclick=()=>{
+      const x=minorData[Number(el.dataset.minorIndex)];
+      const box=document.getElementById('iatfMinorExplain');
+      if(box)box.innerHTML=`<b>${x[0]} · ${escapeHtml(x[1])} (${escapeHtml(x[2])})</b><br>${escapeHtml(x[3])}`;
+    });
+  }
+
+  // VDA 6.3 Focus Map:
+  // activeStandard/data 변수와 무관하게 VDA 전용 localStorage만 읽고 P1~P7을 고정 표시한다.
+  let vdaStored=[];
+  try{
+    const parsed=JSON.parse(localStorage.getItem('vda63_requested_dashboard_complete_v1'));
+    if(Array.isArray(parsed))vdaStored=parsed;
+  }catch(e){}
+  if(!vdaStored.length && typeof VDA_DEFAULT!=='undefined')vdaStored=clone(VDA_DEFAULT);
+  if(!vdaStored.length && typeof DEFAULT_DATA!=='undefined')vdaStored=clone(DEFAULT_DATA);
+
+  function vdaModuleNumber(m){
+    const raw=String((m&&m.id)||'')+' '+String((m&&m.name)||'');
+    const mm=raw.match(/\bP\s*([1-7])\b/i);
+    return mm?Number(mm[1]):null;
+  }
+  const vdaMap={1:0,2:0,3:0,4:0,5:0,6:0,7:0};
+  (vdaStored||[]).forEach(m=>{
+    const p=vdaModuleNumber(m);
+    if(!p)return;
+    vdaMap[p]=(m.clauses||[]).reduce((n,c)=>n+(Array.isArray(c.minimum)?c.minimum.length:0),0);
+  });
+  const vdaStats=[1,2,3,4,5,6,7].map(p=>({name:'P'+p,count:vdaMap[p]||0}));
+  const vdaRoot=document.getElementById('homeVdaFocusBars');
+  if(vdaRoot){
+    const max=Math.max(1,...vdaStats.map(x=>x.count));
+    vdaRoot.innerHTML=vdaStats.map(x=>`<div class="global-bar"><label>${x.name}</label><div class="track"><div class="fill" style="width:${x.count?Math.max(4,Math.round(x.count/max*100)):0}%"></div></div><b>${x.count}</b></div>`).join('');
+  }
+
+  // Department prep based only on audit plan fields
+  const prep=document.getElementById('homeDeptPreparation');
+  if(prep){
+    const grouped={};
+    plans.forEach(p=>{
+      const teams=String(p.team||'미지정').split(/[/,\n]/).map(x=>x.trim()).filter(Boolean);
+      (teams.length?teams:['미지정']).forEach(t=>(grouped[t]||(grouped[t]=[])).push(p));
+    });
+    prep.innerHTML=Object.entries(grouped).slice(0,12).map(([dept,rows])=>{
+      const procs=[...new Set(rows.map(x=>x.process).filter(Boolean))];
+      const procsText=procs.join(', ')||'미입력';
+      const procsProcedures=[...new Set(rows.map(x=>x.procedure).filter(Boolean))].join(', ')||'미입력';
+      return `<div class="dept-prep"><h3>${escapeHtml(dept)}</h3><p><b>심사 프로세스:</b> ${escapeHtml(procsText)}</p><p><b>관련 절차서:</b> ${escapeHtml(procsProcedures)}</p><p><b>등록 일정:</b> ${rows.length}건</p></div>`;
+    }).join('')||'<div class="empty-note">심사계획에 부서 정보가 없습니다.</div>';
+  }
+
+  const chip=document.getElementById('homeModeChip');
+  if(chip){chip.textContent=isAdmin?'관리자':'일반 열람';chip.className=isAdmin?'admin-chip':'viewer-chip'}
+  document.getElementById('homeLoginBtn')?.classList.toggle('hidden',isAdmin);
+  document.getElementById('homeLogoutBtn')?.classList.toggle('hidden',!isAdmin);
+}
 function updateAccessUI(){
   document.querySelectorAll('.admin-only').forEach(el=>el.classList.toggle('is-locked',!isAdmin));
   document.querySelectorAll('.write-control').forEach(el=>{el.classList.toggle('is-locked',!isAdmin);el.disabled=!isAdmin});
@@ -1575,6 +2002,9 @@ function updateAccessUI(){
   document.getElementById('loginBtn').classList.toggle('hidden',isAdmin);
   document.getElementById('logoutBtn').classList.toggle('hidden',!isAdmin);
   document.getElementById('readonlyNotice').classList.toggle('show',!isAdmin);
+  if(window.__duringHomeReady===true){
+    try{renderHomeDashboard()}catch(e){console.warn('HOME dashboard refresh skipped:',e)}
+  }
 }
 function requireAdmin(){
   if(isAdmin)return true;
@@ -1850,8 +2280,16 @@ function openTrainingMaterialModal(){
   const m=document.getElementById('trainingMaterialModal');
   if(!m){alert('교육자료 화면을 찾지 못했습니다.');return;}
   const sel=document.getElementById('trainingStd');
-  if(sel) sel.value=(typeof activeStandard!=='undefined'&&activeStandard==='IATF')?'IATF':'VDA';
+
+  // 팝업 최초 진입 시에는 현재 심사기준을 기본값으로 사용.
+  // 사용자가 교육자료 기준을 이미 새로고침했다면 그 선택을 유지한다.
+  if(!window.__trainingSelectedStd){
+    window.__trainingSelectedStd=(typeof activeStandard!=='undefined'&&activeStandard==='IATF')?'IATF':'VDA';
+  }
+  if(sel)sel.value=window.__trainingSelectedStd;
+
   m.classList.add('show');
+  refreshTrainingStandard();
 }
 function closeTrainingMaterialModal(){
   const m=document.getElementById('trainingMaterialModal');
@@ -2048,6 +2486,883 @@ try{
   document.body.style.filter='';
 }
 
+
+window.__lastHtmlAuditReport='';
+
+function htmlRptEsc(v){
+  return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function htmlRptRows(rows){
+  return rows.map(r=>'<tr>'+r.map(c=>`<td>${htmlRptEsc(c).replace(/\n/g,'<br>')}</td>`).join('')+'</tr>').join('');
+}
+function htmlRptTable(headers,rows){
+  return `<div class="table-wrap"><table><thead><tr>${headers.map(h=>`<th>${htmlRptEsc(h)}</th>`).join('')}</tr></thead><tbody>${htmlRptRows(rows)}</tbody></table></div>`;
+}
+function htmlRptCountBy(rows,getter){
+  const m={};
+  rows.forEach(x=>{
+    const k=String(getter(x)||'미지정').trim()||'미지정';
+    m[k]=(m[k]||0)+1;
+  });
+  return Object.entries(m).sort((a,b)=>b[1]-a[1]);
+}
+function htmlRptDonut(title,items){
+  const total=items.reduce((s,x)=>s+x[1],0);
+  const colors=['#2563eb','#16a34a','#f59e0b','#dc2626','#7c3aed','#0891b2','#ea580c','#4f46e5','#65a30d','#be123c'];
+  let acc=0,parts=[];
+  items.forEach((x,i)=>{
+    const st=total?acc/total*100:0;
+    acc+=x[1];
+    const en=total?acc/total*100:0;
+    parts.push(`${colors[i%colors.length]} ${st}% ${en}%`);
+  });
+  const legend=items.map((x,i)=>`<div class="legend-row"><span class="dot" style="background:${colors[i%colors.length]}"></span><span>${htmlRptEsc(x[0])}</span><b>${x[1]}</b></div>`).join('');
+  return `<div class="chart-card"><h3>${htmlRptEsc(title)}</h3><div class="chart-flex"><div class="donut" style="background:${total?`conic-gradient(${parts.join(',')})`:'#e5e7eb'}"><span>${total}</span></div><div class="legend">${legend||'<div class="muted">데이터 없음</div>'}</div></div></div>`;
+}
+function htmlRptKpi(label,value){
+  return `<div class="kpi"><span>${htmlRptEsc(label)}</span><b>${htmlRptEsc(value)}</b></div>`;
+}
+function buildHtmlAuditReport(kind='all'){
+  const std=selectedAuditStd();
+  const stdLabel=auditStdLabel(std);
+  const meta=auditManager.meta||{};
+  const plans=(auditManager.plan||[]).filter(x=>x.std==='ALL'||x.std===std);
+  const findings=reportFindings(std);
+  const cms=findings.map(closureMeta);
+  const clauses=flatClausesForReport(std);
+  const closed=cms.filter(x=>x.status==='Closed').length;
+  const major=cms.filter(x=>x.severity==='Major').length;
+  const minor=cms.filter(x=>x.severity==='Minor').length;
+  const dept=htmlRptCountBy(findings,f=>closureMeta(f).department||'미지정');
+  const req=htmlRptCountBy(findings,f=>f.selectedClause||'미분류');
+  const proc=htmlRptCountBy(findings,f=>closureMeta(f).process||'미지정');
+
+  let sections='';
+
+  if(kind==='all'){
+    sections+=`
+    <section>
+      <h2>1. 심사 결과 Dashboard</h2>
+      <div class="kpi-grid">
+        ${htmlRptKpi('전체 지적',findings.length)}
+        ${htmlRptKpi('Major',major)}
+        ${htmlRptKpi('Minor',minor)}
+        ${htmlRptKpi('종결',closed)}
+        ${htmlRptKpi('미종결',findings.length-closed)}
+        ${htmlRptKpi('종결률',findings.length?Math.round(closed/findings.length*100)+'%':'0%')}
+      </div>
+      <div class="chart-grid">
+        ${htmlRptDonut('부서별 지적사항',dept)}
+        ${htmlRptDonut('요건별 지적사항',req)}
+        ${htmlRptDonut('프로세스별 지적사항',proc)}
+      </div>
+    </section>`;
+  }
+
+  if(kind==='all'||kind==='plan'){
+    sections+=`
+    <section>
+      <h2>${kind==='all'?'2. ':''}내부시스템심사 계획</h2>
+      <div class="info-grid">
+        <div><b>심사기준</b><span>${htmlRptEsc(stdLabel)}</span></div>
+        <div><b>작성일자</b><span>${htmlRptEsc(meta.createdDate||'')}</span></div>
+        <div><b>심사구분</b><span>${htmlRptEsc(meta.auditType||'')}</span></div>
+        <div><b>대상공장/사업장</b><span>${htmlRptEsc(meta.plant||'')}</span></div>
+        <div><b>선임팀장</b><span>${htmlRptEsc(meta.lead||'')}</span></div>
+        <div><b>심사목적</b><span>${htmlRptEsc(meta.purpose||'')}</span></div>
+      </div>
+      ${htmlRptTable(
+        ['No','구분','심사일자','시간','팀/부서','해당 프로세스','해당 절차서','심사팀','비고','적용기준'],
+        plans.map((p,i)=>[i+1,p.site,p.date,p.time,p.team,p.process,p.procedure,p.auditTeam,p.remark,p.std==='ALL'?'공통':auditStdLabel(p.std)])
+      )}
+    </section>`;
+  }
+
+  if(kind==='all'||kind==='result'){
+    sections+=`
+    <section>
+      <h2>${kind==='all'?'3. ':''}요건별 심사 결과</h2>
+      ${htmlRptTable(
+        ['No','모듈','조항','제목','최소 요구사항','영문 요구사항/이행 사례','심사의견/결과'],
+        clauses.map((c,i)=>[i+1,c.module,c.id,c.title,c.minimum,c.english||c.examples||'',c.note||''])
+      )}
+    </section>`;
+  }
+
+  if(kind==='all'||kind==='nc'){
+    sections+=`
+    <section>
+      <h2>${kind==='all'?'4. ':''}부적합 보고서</h2>
+      ${htmlRptTable(
+        ['No','기준','부서','프로세스','조항','부적합 진술','구분','담당자','완료예정일','개선대책'],
+        findings.map((f,i)=>{
+          const c=closureMeta(f);
+          return [i+1,stdLabel,c.department,c.process,f.selectedClause||'',f.text||'',c.severity,c.owner,f.schedule||'',f.correctiveAction||''];
+        })
+      )}
+    </section>`;
+  }
+
+  if(kind==='all'||kind==='close'){
+    sections+=`
+    <section>
+      <h2>${kind==='all'?'5. ':''}종결 보고서</h2>
+      ${htmlRptTable(
+        ['No','부서','프로세스','조항','지적사항','구분','담당자','완료예정일','개선대책','유효성 확인','상태','종결일'],
+        findings.map((f,i)=>{
+          const c=closureMeta(f);
+          return [i+1,c.department,c.process,f.selectedClause||'',f.text||'',c.severity,c.owner,f.schedule||'',f.correctiveAction||'',c.effectiveness,c.status,c.closeDate];
+        })
+      )}
+    </section>`;
+  }
+
+  return `<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${htmlRptEsc(stdLabel)} 내부시스템심사 보고서</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:Arial,"Malgun Gothic",sans-serif;margin:0;background:#eef2f7;color:#111827}
+.page{width:100%;max-width:none;margin:0;padding:24px}
+.header{background:#0f2d4a;color:white;border-radius:14px;padding:22px 26px;margin-bottom:18px}
+.header h1{margin:0;font-size:28px}.header .sub{margin-top:7px;color:#dbeafe;font-size:14px}
+section{background:white;border:1px solid #cbd5e1;border-radius:12px;padding:20px;margin:14px 0}
+h2{margin:0 0 16px;font-size:21px;border-bottom:2px solid #2563eb;padding-bottom:9px}
+.kpi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.kpi{border:1px solid #cbd5e1;border-radius:10px;padding:14px;text-align:center;background:#f8fafc}
+.kpi span{display:block;color:#64748b;font-size:13px}.kpi b{display:block;margin-top:6px;font-size:25px;color:#0f2d4a}
+.chart-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.chart-card{border:1px solid #dbe3ef;border-radius:10px;padding:14px}.chart-card h3{margin:0 0 12px}
+.chart-flex{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center}
+.donut{width:145px;height:145px;border-radius:50%;position:relative}.donut:after{content:"";position:absolute;inset:28px;background:#fff;border-radius:50%}
+.donut span{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800}
+.legend{max-height:180px;overflow:auto}.legend-row{display:grid;grid-template-columns:11px 1fr auto;gap:7px;align-items:center;padding:4px 0;border-bottom:1px dashed #e5e7eb}
+.dot{width:9px;height:9px;border-radius:2px}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.info-grid>div{border:1px solid #dbe3ef;border-radius:8px;padding:10px}.info-grid b{display:block;color:#64748b;font-size:12px}.info-grid span{display:block;margin-top:4px}
+.table-wrap{overflow-x:auto;overflow-y:visible;border:1px solid #cbd5e1;border-radius:8px;width:100%}
+table{width:max-content;min-width:100%;border-collapse:collapse;font-size:12px;table-layout:auto}
+th{background:#eaf2ff;color:#0f2d4a;position:sticky;top:0;white-space:nowrap;word-break:keep-all}
+th,td{border:1px solid #cbd5e1;padding:8px 10px;vertical-align:top;line-height:1.55;word-break:keep-all;overflow-wrap:normal}
+td{white-space:normal;min-width:90px}
+th:nth-child(1),td:nth-child(1){min-width:50px;text-align:center}
+th:nth-child(2),td:nth-child(2){min-width:90px}
+th:nth-child(3),td:nth-child(3){min-width:110px}
+th:nth-child(4),td:nth-child(4){min-width:130px}
+th:nth-child(5),td:nth-child(5){min-width:110px}
+th:nth-child(6),td:nth-child(6){min-width:240px}
+th:nth-child(7),td:nth-child(7){min-width:100px}
+th:nth-child(8),td:nth-child(8){min-width:110px}
+th:nth-child(9),td:nth-child(9){min-width:130px}
+th:nth-child(10),td:nth-child(10){min-width:240px}
+th:nth-child(11),td:nth-child(11){min-width:190px}
+th:nth-child(12),td:nth-child(12){min-width:100px}
+.footer{padding:18px;text-align:center;color:#64748b;font-size:12px}
+@media print{body{background:white}.page{max-width:none;padding:0}.header{border-radius:0}section{break-inside:avoid;border:1px solid #888}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <h1>DURING 내부시스템심사 보고서</h1>
+    <div class="sub">기준: ${htmlRptEsc(stdLabel)} | 생성일: ${new Date().toLocaleString()}</div>
+  </div>
+  ${sections}
+  <div class="footer">DURING Quality Management System · 내부시스템심사 관리자료</div>
+</div>
+</body>
+</html>`;
+}
+
+function generateHtmlAuditReport(kind='all'){
+  try{
+    saveAuditManagerData();
+    window.__lastHtmlAuditReport=buildHtmlAuditReport(kind);
+    const frame=document.getElementById('htmlReportFrame');
+    if(frame)frame.srcdoc=window.__lastHtmlAuditReport;
+    const modal=document.getElementById('htmlReportModal');
+    if(modal)modal.classList.add('show');
+    const status=document.getElementById('auditHtmlReportStatus');
+    if(status){
+      status.textContent='HTML 보고서를 생성했습니다. 다운로드 없이 바로 열람할 수 있습니다.';
+      status.classList.add('show');
+    }
+    showToast('HTML 심사보고서를 생성했습니다.');
+  }catch(e){
+    console.error(e);
+    alert('HTML 보고서 생성 중 오류가 발생했습니다: '+(e.message||e));
+  }
+}
+
+function toggleHtmlReportMaximize(){
+  const d=document.getElementById('htmlReportDialog');
+  if(!d)return;
+  const on=!d.classList.contains('report-maximized');
+  d.classList.toggle('report-maximized',on);
+  const frame=document.getElementById('htmlReportFrame');
+  if(frame && frame.contentDocument){
+    const page=frame.contentDocument.querySelector('.page');
+    if(page){
+      page.style.maxWidth='none';
+      page.style.width='100%';
+      page.style.margin='0';
+      page.style.padding=on?'18px':'24px';
+    }
+  }
+}
+async function saveHtmlReportFile(){
+  if(!window.__lastHtmlAuditReport){alert('먼저 HTML 보고서를 생성해 주세요.');return}
+  const std=selectedAuditStd();
+  const filename=`${auditStdLabel(std).replace(/\s/g,'_')}_내부시스템심사_보고서.html`;
+  const blob=new Blob([window.__lastHtmlAuditReport],{type:'text/html;charset=utf-8'});
+  if(typeof window.showSaveFilePicker==='function'&&window.isSecureContext){
+    try{
+      const handle=await window.showSaveFilePicker({
+        suggestedName:filename,
+        types:[{description:'HTML Document',accept:{'text/html':['.html']}}]
+      });
+      const writable=await handle.createWritable();
+      await writable.write(blob);await writable.close();
+      showToast('HTML 보고서를 저장했습니다.');return;
+    }catch(e){if(e&&e.name==='AbortError')return;console.warn(e)}
+  }
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download=filename;
+  a.style.display='none';document.body.appendChild(a);a.click();
+  setTimeout(()=>{a.remove();URL.revokeObjectURL(url)},5000);
+  showToast('HTML 파일 다운로드를 실행했습니다.');
+}
+
+function closeHtmlReportModal(){const m=document.getElementById('htmlReportModal');if(m)m.classList.remove('show')}
+function openHtmlReportWindow(){
+  if(!window.__lastHtmlAuditReport){alert('먼저 HTML 보고서를 생성해 주세요.');return}
+  const w=window.open('','_blank');
+  if(!w){alert('새 창이 차단되었습니다. 브라우저 팝업 허용 후 다시 시도해 주세요.');return}
+  w.document.open();w.document.write(window.__lastHtmlAuditReport);w.document.close();
+}
+function printHtmlReport(){
+  const frame=document.getElementById('htmlReportFrame');
+  if(frame&&frame.contentWindow){frame.contentWindow.focus();frame.contentWindow.print()}
+}
+async function copyHtmlReportSource(){
+  if(!window.__lastHtmlAuditReport){alert('먼저 HTML 보고서를 생성해 주세요.');return}
+  try{
+    await navigator.clipboard.writeText(window.__lastHtmlAuditReport);
+    showToast('HTML 코드를 클립보드에 복사했습니다.');
+  }catch(e){
+    const ta=document.createElement('textarea');
+    ta.value=window.__lastHtmlAuditReport;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    ta.remove();
+    showToast('HTML 코드를 클립보드에 복사했습니다.');
+  }
+}
+
+
+window.__lastTrainingHtml='';
+
+function trainingHtmlEsc(v){
+  return String(v==null?'':v)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+window.__trainingSelectedStd=window.__trainingSelectedStd||null;
+function trainingCurrentStd(){
+  if(window.__trainingSelectedStd==='IATF'||window.__trainingSelectedStd==='VDA')return window.__trainingSelectedStd;
+  const sel=document.getElementById('trainingStd');
+  if(sel&&(sel.value==='IATF'||sel.value==='VDA'))return sel.value;
+  return (typeof activeStandard!=='undefined'&&activeStandard==='IATF')?'IATF':'VDA';
+}
+function trainingHtmlData(std){
+  const target=(std==='IATF')?'IATF':'VDA';
+
+  if(target==='IATF'){
+    try{
+      const d=JSON.parse(localStorage.getItem('iatf16949_audit_guide_v1'));
+      if(Array.isArray(d)&&d.length)return clone(d);
+    }catch(e){}
+    return (typeof IATF_DEFAULT!=='undefined')?clone(IATF_DEFAULT):[];
+  }
+
+  try{
+    const d=JSON.parse(localStorage.getItem('vda63_requested_dashboard_complete_v1'));
+    if(Array.isArray(d)&&d.length)return clone(d);
+  }catch(e){}
+
+  // VDA 교육자료는 활성화된 data 객체(IATF일 수 있음)를 fallback으로 사용하지 않는다.
+  return (typeof DEFAULT_DATA!=='undefined')?clone(DEFAULT_DATA):[];
+}
+
+
+function trainingKeyTerms(c){
+  const text=[c.title,c.navTitle,...(c.minimum||[])].join(' ');
+  const cleaned=text.replace(/[()\[\]{}.,;:!?/\\]/g,' ').split(/\s+/).map(x=>x.trim()).filter(x=>x.length>=2);
+  const stop=new Set(['그리고','또는','대한','위한','관련','하여','해야','한다','있다','있는','등을','에서','으로','하며','조직의','조직은','관리','품질','요구사항']);
+  const freq={};cleaned.forEach(x=>{if(!stop.has(x))freq[x]=(freq[x]||0)+1});
+  return Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,8).map(x=>x[0]);
+}
+function trainingRequirementSections(std){
+  let out='',moduleStats=[];
+  (trainingHtmlData(std)||[]).forEach(m=>{
+    let cards='',reqCount=0,qCount=0;
+    (m.clauses||[]).forEach(c=>{
+      const reqArr=(c.minimum||[]).filter(Boolean);
+      const rightArr=(std==='IATF'?(c.minimumEn||[]):(c.examples||[])).filter(Boolean);
+      let qs=std==='IATF'?(c.questionsV2||c.questions||[]):((c.vdaQuestionsV2&&c.vdaQuestionsV2.length)?c.vdaQuestionsV2:(typeof vdaGeneratedQuestions==='function'?vdaGeneratedQuestions(c,m.id||m.name||''):(c.questions||[])));
+      qs=(qs||[]).slice(0,10);
+      const terms=trainingKeyTerms(c);
+      reqCount+=reqArr.length;qCount+=qs.length;
+
+      const reqBlocks=reqArr.map((x,i)=>`<div class="learn-point"><span class="num">${i+1}</span><div><b>등록 요구사항 ${i+1}</b><p>${trainingHtmlEsc(x).replace(/\n/g,'<br>')}</p></div></div>`).join('');
+      const rightBlocks=rightArr.map((x,i)=>`<div class="example-row"><b>${std==='IATF'?'English '+(i+1):'등록 사례 '+(i+1)}</b><p>${trainingHtmlEsc(x).replace(/\n/g,'<br>')}</p></div>`).join('');
+      const questionRows=qs.map((q,i)=>`<li><b>Q${i+1}.</b> ${trainingHtmlEsc(q)}</li>`).join('');
+      const termChips=terms.map(x=>`<span class="term-chip">${trainingHtmlEsc(x)}</span>`).join('');
+
+      cards+=`<article class="req-card detailed">
+        <div class="req-title"><div><span class="clause-badge">${trainingHtmlEsc(c.id)}</span><h3>${trainingHtmlEsc(c.navTitle||c.title||'')}</h3></div><div class="req-meta"><span>요구 ${reqArr.length}</span><span>질문 ${qs.length}</span></div></div>
+        <div class="term-box"><b>이 조항에서 반복되는 핵심 단어</b><div>${termChips||'<span class="empty-note">추출 단어 없음</span>'}</div></div>
+        <div class="learning-flow"><span>요구사항 읽기</span><i>→</i><span>${std==='IATF'?'영문 원문/등록 영문 확인':'등록 이행사례 확인'}</span><i>→</i><span>예상질문으로 이해 확인</span><i>→</i><span>현장·기록에서 증거 확인</span></div>
+        <div class="detail-grid">
+          <div class="detail-panel"><h4>① 현재 시스템에 등록된 최소 요구사항</h4>${reqBlocks||'<div class="empty-note">최소 요구사항 미입력</div>'}</div>
+          <div class="detail-panel"><h4>② 현재 시스템에 등록된 ${std==='IATF'?'영문 요구사항':'이행을 위한 사례'}</h4>${rightBlocks||'<div class="empty-note">등록 내용 없음</div>'}</div>
+        </div>
+        <div class="detail-panel"><h4>③ 이 조항을 이해했는지 확인하는 심사 예상질문</h4><ol class="question-list">${questionRows||'<li>등록 질문 없음</li>'}</ol></div>
+        <div class="education-note"><b>교육 활용 방법</b><p>위 최소 요구사항과 등록 사례/영문을 먼저 읽고, 예상질문에 답할 때 해당 부서의 절차·기록·현장 실행을 함께 설명할 수 있도록 준비합니다.</p></div>
+      </article>`;
+    });
+    moduleStats.push({name:m.name||m.id,req:reqCount,q:qCount});
+    out+=`<section class="training-section"><h2>${trainingHtmlEsc(m.name||m.id||'')}</h2>${cards}</section>`;
+  });
+  const maxReq=Math.max(1,...moduleStats.map(x=>x.req));
+  const bars=moduleStats.map(s=>`<div class="metric-bar"><span>${trainingHtmlEsc(s.name)}</span><div><i style="width:${Math.round(s.req/maxReq*100)}%"></i></div><b>${s.req}</b></div>`).join('');
+  return `<section class="training-summary"><h2>등록 요건 구성 한눈에 보기</h2><p>현재 시스템에 실제 등록된 최소 요구사항 개수만 사용한 시각화입니다.</p>${bars}</section>`+out;
+}
+
+function tokensForPlanRow(p){
+  return [p.team,p.process,p.procedure].join(' ').replace(/[()/,\\]/g,' ').split(/\s+/).map(x=>x.trim()).filter(x=>x.length>=2);
+}
+function clauseMatchScore(c,tokens){
+  const text=[c.id,c.title,c.navTitle,...(c.minimum||[]),...(c.examples||[]),...(c.minimumEn||[])].join(' ').toLowerCase();
+  let s=0;tokens.forEach(t=>{if(text.includes(String(t).toLowerCase()))s++});
+  return s;
+}
+
+function trainingDepartmentSections(std){
+  const target=(std==='IATF')?'IATF':'VDA';
+
+  // 중요: 교육자료의 기준과 동일한 심사계획만 사용한다.
+  // ALL/공통 계획은 기준 혼합 위험이 있으므로 교육자료에서는 자동 포함하지 않는다.
+  const allPlans=(typeof auditManager!=='undefined'&&Array.isArray(auditManager.plan))?auditManager.plan:[];
+  const plans=allPlans.filter(p=>{
+    const ps=String(p.std||'').toUpperCase();
+    return target==='IATF' ? ps==='IATF' : ps==='VDA';
+  });
+
+  const label=target==='IATF'?'IATF 16949':'VDA 6.3';
+  const deptMap={};
+
+  plans.forEach(p=>{
+    const teams=String(p.team||'미지정')
+      .split(/[/,\n]/)
+      .map(x=>x.trim())
+      .filter(Boolean);
+    (teams.length?teams:['미지정']).forEach(t=>{
+      (deptMap[t]||(deptMap[t]=[])).push(p);
+    });
+  });
+
+  const modules=trainingHtmlData(target)||[];
+  const allClauses=[];
+  modules.forEach(m=>(m.clauses||[]).forEach(c=>{
+    allClauses.push({...c,moduleName:m.name||m.id,moduleId:m.id||''});
+  }));
+
+  if(!plans.length){
+    return `<section>
+      <h2>${label} 부서별 교육자료</h2>
+      <div class="empty-note">
+        현재 <b>${label}</b> 기준으로 등록된 내부시스템심사 계획이 없습니다.<br>
+        따라서 다른 기준(IATF/VDA)의 심사계획을 혼합하지 않고, 부서별 교육자료 자동생성을 보류합니다.<br>
+        먼저 내부시스템심사 계획에서 해당 기준으로 부서·프로세스·절차서를 등록해 주세요.
+      </div>
+    </section>`;
+  }
+
+  const cards=Object.entries(deptMap).map(([dept,rows])=>{
+    const tokens=[...new Set(rows.flatMap(tokensForPlanRow))];
+    const matched=allClauses
+      .map(c=>({c,score:clauseMatchScore(c,tokens)}))
+      .filter(x=>x.score>0)
+      .sort((a,b)=>b.score-a.score)
+      .slice(0,10);
+
+    const processes=[...new Set(rows.map(x=>x.process).filter(Boolean))];
+    const procedures=[...new Set(rows.map(x=>x.procedure).filter(Boolean))];
+    const schedules=rows.map(x=>`${x.date||''} ${x.time||''}`.trim()).filter(Boolean);
+
+    return `<article class="dept-detail-card">
+      <div class="dept-title">
+        <h3>${trainingHtmlEsc(dept)}</h3>
+        <span>${label} · 등록 일정 ${rows.length}건 · 자동 연관요건 ${matched.length}건</span>
+      </div>
+
+      <div class="dept-grid2">
+        <div class="detail-panel">
+          <h4>① ${label} 기준 등록 심사범위</h4>
+          <p><b>프로세스</b><br>${processes.map(trainingHtmlEsc).join('<br>')||'미입력'}</p>
+          <p><b>절차서</b><br>${procedures.map(trainingHtmlEsc).join('<br>')||'미입력'}</p>
+          <p><b>심사일정</b><br>${schedules.map(trainingHtmlEsc).join('<br>')||'미입력'}</p>
+        </div>
+
+        <div class="detail-panel">
+          <h4>② ${label} 요구사항과 직접 일치한 조항</h4>
+          ${matched.length
+            ? matched.map(x=>`<div class="related-clause">
+                <b>${trainingHtmlEsc(x.c.id)} ${trainingHtmlEsc(x.c.navTitle||x.c.title||'')}</b>
+                <small>${trainingHtmlEsc(x.c.moduleName)}</small>
+                <p>${trainingHtmlEsc((x.c.minimum||[]).join('\n')).replace(/\n/g,'<br>')}</p>
+              </div>`).join('')
+            : '<div class="empty-note">현재 등록된 부서/프로세스/절차서 명칭과 직접 일치하는 '+label+' 요건이 없습니다. 임의 매핑은 하지 않았습니다.</div>'}
+        </div>
+      </div>
+
+      <div class="education-note">
+        <b>부서 교육 포인트</b>
+        <p>${label} 기준으로 등록된 심사계획만 사용했습니다. 다른 기준의 심사계획은 이 교육자료에 포함하지 않습니다.</p>
+      </div>
+    </article>`;
+  }).join('');
+
+  return `<section>
+    <h2>${label} 부서별 교육자료</h2>
+    <p class="training-desc">
+      이 자료는 <b>${label}</b> 기준으로 등록된 내부심사 계획의 부서·프로세스·절차서와
+      ${label} 요구사항 텍스트만 사용합니다. 다른 기준의 계획은 혼합하지 않습니다.
+    </p>
+    ${cards}
+  </section>`;
+}
+function trainingAuditorSections(std){
+  const modules=trainingHtmlData(std)||[];
+  let clauseCount=0,reqCount=0,qCount=0,exampleCount=0;
+  modules.forEach(m=>(m.clauses||[]).forEach(c=>{
+    clauseCount++;reqCount+=(c.minimum||[]).length;
+    exampleCount+=(std==='IATF'?(c.minimumEn||[]):(c.examples||[])).length;
+    const qs=std==='IATF'?(c.questionsV2||c.questions||[]):((c.vdaQuestionsV2&&c.vdaQuestionsV2.length)?c.vdaQuestionsV2:(typeof vdaGeneratedQuestions==='function'?vdaGeneratedQuestions(c,m.id||m.name||''):(c.questions||[])));
+    qCount+=(qs||[]).length;
+  }));
+  return `<section class="auditor-hero">
+    <h2>${std==='IATF'?'IATF 16949':'VDA 6.3'} 내부심사원 역량 자료</h2>
+    <div class="auditor-kpis"><div><b>${clauseCount}</b><span>등록 조항</span></div><div><b>${reqCount}</b><span>최소 요구사항</span></div><div><b>${exampleCount}</b><span>${std==='IATF'?'영문 요구사항':'등록 이행사례'}</span></div><div><b>${qCount}</b><span>예상질문</span></div></div>
+    </section>
+    <section><h2>내부심사원이 자료를 사용하는 순서</h2>
+      <div class="auditor-flow">
+       <div><b>1</b><strong>조항 구조</strong><span>등록된 조항과 제목을 먼저 이해</span></div><i>→</i>
+       <div><b>2</b><strong>최소 요구사항</strong><span>시스템에 등록된 실제 문장 확인</span></div><i>→</i>
+       <div><b>3</b><strong>${std==='IATF'?'영문 대조':'이행사례'}</strong><span>등록 보조자료와 대조</span></div><i>→</i>
+       <div><b>4</b><strong>예상질문</strong><span>질문에 답할 수 있는지 확인</span></div><i>→</i>
+       <div><b>5</b><strong>객관적 증거</strong><span>절차·기록·현장 실행 일치 확인</span></div>
+      </div>
+    </section>
+    <section><h2>심사 판정 전 확인 원칙</h2>
+      <div class="dept-grid">
+        <article class="dept-card"><h3>요구사항 근거</h3><ul><li>현재 시스템에 등록된 최소 요구사항을 기준으로 질문</li><li>등록되지 않은 내용을 표준 요구처럼 임의 추가하지 않음</li></ul></article>
+        <article class="dept-card"><h3>객관적 증거</h3><ul><li>문서만이 아니라 실제 기록과 현장 실행을 함께 확인</li><li>예상질문은 이해를 돕는 수단이며 판정 근거는 요구사항과 증거</li></ul></article>
+        <article class="dept-card"><h3>IATF 16949</h3><ul><li>등록된 한글 요구사항과 영문 요구사항을 함께 확인</li><li>고객지정요구사항(CSR)이 연결된 경우 별도 확인</li></ul></article>
+        <article class="dept-card"><h3>VDA 6.3</h3><ul><li>P2~P7 프로세스 요소별 등록 요구사항과 이행사례 확인</li><li>질문별 평가 전 해당 프로세스의 실제 실행과 증거 확인</li></ul></article>
+      </div>
+    </section>
+    ${trainingRequirementSections(std)}`;
+}
+function buildTrainingHtml(type,std){
+  const target=(std==='IATF')?'IATF':'VDA';
+  const label=target==='IATF'?'IATF 16949':'VDA 6.3';
+  const sourceData=trainingHtmlData(target);
+  const moduleLabels=(sourceData||[]).map(m=>m.id||m.name||'').filter(Boolean).join(', ');
+  let body='';
+  if(type==='requirement'||type==='all')body+=trainingRequirementSections(std);
+  if(type==='department'||type==='all')body+=trainingDepartmentSections(std);
+  if(type==='auditor'||type==='all')body+=trainingAuditorSections(std);
+  return `<!doctype html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>${label} 교육자료</title>
+  <style>
+  *{box-sizing:border-box}body{margin:0;background:#eef2f7;color:#111827;font-family:Arial,"Malgun Gothic",sans-serif}
+  .page{width:100%;max-width:none;margin:0;padding:24px}.hero{background:#0f2d4a;color:white;border-radius:14px;padding:24px 28px}
+  .hero h1{margin:0;font-size:29px}.hero p{color:#dbeafe}.source-check{margin-top:10px;padding:8px 10px;border:1px solid rgba(255,255,255,.25);border-radius:8px;color:#e5eff8;font-size:12px}
+  section{background:white;border:1px solid #cbd5e1;border-radius:12px;padding:20px;margin:14px 0}h2{border-bottom:2px solid #2563eb;padding-bottom:9px}
+  .req-card{border:1px solid #dbe3ef;border-radius:12px;padding:18px;margin:14px 0}.req-card h3{margin:0}.clause-badge{display:inline-block;background:#dbeafe;color:#1d4ed8;border-radius:6px;padding:4px 8px;margin-right:7px}.req-title{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.req-title>div:first-child{display:flex;align-items:center}.req-meta{display:flex;gap:6px;flex-wrap:wrap}.req-meta span{background:#f1f5f9;border:1px solid #dbe3ef;padding:4px 7px;border-radius:20px;font-size:11px}.learning-flow,.auditor-flow{display:flex;align-items:center;gap:7px;margin:14px 0}.learning-flow span,.auditor-flow>div{background:#f8fafc;border:1px solid #dbe3ef;border-radius:8px;padding:8px 10px;font-size:12px}.learning-flow i,.auditor-flow i{font-style:normal;color:#94a3b8}.detail-grid,.dept-grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.detail-panel{border:1px solid #e2e8f0;border-radius:9px;padding:13px;background:#fbfcfe;margin-top:10px}.detail-panel h4{margin:0 0 10px}.learn-point{display:grid;grid-template-columns:28px 1fr;gap:8px;padding:8px 0;border-bottom:1px dashed #e2e8f0}.learn-point .num{width:24px;height:24px;display:grid;place-items:center;background:#e6f0fb;color:#1e5f9f;border-radius:50%;font-weight:800}.learn-point p,.example-row p,.related-clause p{margin:4px 0;line-height:1.6}.example-row,.finding-row,.dept-line{padding:8px 0;border-bottom:1px dashed #e2e8f0}.finding-row{display:grid;grid-template-columns:80px 1fr;gap:8px}.question-list{columns:2;column-gap:28px}.question-list li{break-inside:avoid;padding:3px 0}.training-summary{background:#f8fbff}.metric-bar{display:grid;grid-template-columns:minmax(150px,240px) 1fr 45px;gap:10px;align-items:center;margin:8px 0}.metric-bar>div{height:10px;background:#e7edf4;border-radius:99px;overflow:hidden}.metric-bar i{display:block;height:100%;background:#2f78bd}.dept-detail-card{border:1px solid #dbe3ef;border-radius:11px;padding:16px;margin:12px 0}.dept-title{display:flex;justify-content:space-between;gap:10px}.dept-title h3{margin:0}.dept-title span{font-size:12px;color:#64748b}.dept-related{margin-top:12px}.related-clause{border-left:3px solid #5a91c9;padding:7px 10px;margin:7px 0;background:#f8fafc}.empty-note{padding:10px;color:#7b8794;background:#f8fafc;border-radius:7px}.auditor-kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.auditor-kpis>div{border:1px solid #dbe3ef;border-radius:9px;padding:12px;text-align:center}.auditor-kpis b{display:block;font-size:24px;color:#164d80}.auditor-kpis span{font-size:12px;color:#64748b}.auditor-flow>div{flex:1}.auditor-flow>div b{display:block;color:#2878c8}.auditor-flow>div strong{display:block;margin:4px 0}.auditor-flow>div span{font-size:11px;color:#64748b}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.two>div,.questions{border:1px solid #e2e8f0;border-radius:8px;padding:12px;background:#f8fafc}
+  h4{margin:0 0 8px}li{margin:5px 0;line-height:1.55;word-break:keep-all}.dept-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .dept-card{border:1px solid #dbe3ef;border-radius:10px;padding:14px}.dept-card h3{margin:0 0 8px}
+  @media(max-width:900px){.two,.dept-grid,.detail-grid,.dept-grid2{grid-template-columns:1fr}.question-list{columns:1}.auditor-kpis{grid-template-columns:repeat(2,1fr)}.auditor-flow{flex-wrap:wrap}.auditor-flow i{display:none}}@media print{body{background:white}.page{padding:0}section{break-inside:avoid}}
+  </style></head><body><div class="page"><div class="hero"><h1>DURING ${label} 교육자료</h1><p>요건 이해 · 부서별 준비 · 내부심사원 역량 향상</p><div class="source-check"><b>교육자료 기준:</b> ${label} &nbsp;|&nbsp; <b>사용 모듈:</b> ${trainingHtmlEsc(moduleLabels||'등록 모듈 없음')}</div></div>${body}</div></body></html>`;
+}
+function refreshTrainingStandard(){
+  const sel=document.getElementById('trainingStd');
+  const std=(sel&&sel.value==='IATF')?'IATF':'VDA';
+  window.__trainingSelectedStd=std;
+
+  const label=std==='IATF'?'IATF 16949':'VDA 6.3';
+  document.querySelectorAll('[data-training-badge]').forEach(x=>x.textContent=label);
+
+  const req=document.getElementById('trainingRequirementDesc');
+  const dept=document.getElementById('trainingDepartmentDesc');
+  const aud=document.getElementById('trainingAuditorDesc');
+  const all=document.getElementById('trainingAllDesc');
+
+  if(std==='IATF'){
+    if(req)req.textContent='IATF 16949 4~10장 등록 요구사항·영문 요구사항·예상질문을 기준으로 HTML 교육자료를 생성합니다.';
+    if(dept)dept.textContent='IATF 16949 기준과 현재 심사계획의 부서·프로세스·절차서를 연결해 교육자료를 구성합니다.';
+    if(aud)aud.textContent='IATF 16949 등록 요구사항·영문 요구사항·예상질문을 기반으로 내부심사원 역량자료를 제공합니다.';
+    if(all)all.textContent='선택한 IATF 16949 기준으로 요건별·부서별·내부심사원 교육자료를 하나로 통합합니다.';
+  }else{
+    if(req)req.textContent='VDA 6.3 P1~P7 등록 요구사항·이행사례·예상질문을 기준으로 HTML 교육자료를 생성합니다.';
+    if(dept)dept.textContent='VDA 6.3 기준과 현재 심사계획의 부서·프로세스·절차서를 연결해 교육자료를 구성합니다.';
+    if(aud)aud.textContent='VDA 6.3 프로세스 요소별 요구사항·이행사례·예상질문을 기반으로 내부심사원 역량자료를 제공합니다.';
+    if(all)all.textContent='선택한 VDA 6.3 기준으로 요건별·부서별·내부심사원 교육자료를 하나로 통합합니다.';
+  }
+
+  const guide=document.getElementById('trainingStdGuide');
+  if(guide){
+    guide.textContent=`${label} 기준으로 4개 교육자료 구성을 새로고침했습니다. 아래 HTML 생성 버튼을 선택하세요.`;
+    guide.classList.add('training-refreshed');
+  }
+  const modules=trainingHtmlData(std).map(m=>m.id||m.name||'').filter(Boolean);
+  const moduleBox=document.getElementById('trainingStdModules');
+  if(moduleBox)moduleBox.textContent=`현재 ${label} 교육자료에 사용되는 모듈: ${modules.join(', ')||'등록 모듈 없음'}`;
+
+  showToast(label+' 교육자료 기준을 적용했습니다.');
+}
+function generateTrainingHtml(type){
+  // HTML 생성 직전 selector 값을 다시 적용하여 stale activeStandard 사용을 방지
+  const sel=document.getElementById('trainingStd');
+  if(sel)window.__trainingSelectedStd=(sel.value==='IATF'?'IATF':'VDA');
+  const std=window.__trainingSelectedStd||trainingCurrentStd();
+  window.__lastTrainingType=type;
+  window.__lastTrainingStd=std;
+  window.__lastTrainingHtml=buildTrainingHtml(type,std);
+  const f=document.getElementById('trainingHtmlFrame');
+  if(f)f.srcdoc=window.__lastTrainingHtml;
+  closeTrainingMaterialModal();
+  const m=document.getElementById('trainingHtmlModal');
+  if(m)m.classList.add('show');
+}
+function closeTrainingHtmlModal(){const m=document.getElementById('trainingHtmlModal');if(m)m.classList.remove('show')}
+function toggleTrainingHtmlMaximize(){
+  const d=document.getElementById('trainingHtmlDialog');if(!d)return;
+  const on=!d.classList.contains('training-maximized');d.classList.toggle('training-maximized',on);
+  const frame=document.getElementById('trainingHtmlFrame');
+  if(frame&&frame.contentDocument){
+    const page=frame.contentDocument.querySelector('.page');
+    if(page){page.style.maxWidth='none';page.style.width='100%';page.style.margin='0';}
+  }
+}
+function openTrainingHtmlWindow(){
+  if(!window.__lastTrainingHtml)return;
+  const w=window.open('','_blank');if(!w){alert('팝업 허용 후 다시 시도해 주세요.');return}
+  w.document.open();w.document.write(window.__lastTrainingHtml);w.document.close();
+}
+function printTrainingHtml(){
+  const f=document.getElementById('trainingHtmlFrame');if(f&&f.contentWindow){f.contentWindow.focus();f.contentWindow.print()}
+}
+async function saveTrainingHtmlFile(){
+  if(!window.__lastTrainingHtml){alert('먼저 교육자료를 생성해 주세요.');return}
+  const std=trainingCurrentStd(),filename=`${std==='IATF'?'IATF16949':'VDA63'}_교육자료.html`;
+  const blob=new Blob([window.__lastTrainingHtml],{type:'text/html;charset=utf-8'});
+  if(typeof window.showSaveFilePicker==='function'&&window.isSecureContext){
+    try{
+      const h=await window.showSaveFilePicker({suggestedName:filename,types:[{description:'HTML Document',accept:{'text/html':['.html']}}]});
+      const w=await h.createWritable();await w.write(blob);await w.close();return;
+    }catch(e){if(e&&e.name==='AbortError')return}
+  }
+  const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=filename;document.body.appendChild(a);a.click();
+  setTimeout(()=>{a.remove();URL.revokeObjectURL(u)},5000);
+}
+
+window.__duringHomeReady=true;
+showHomeView();
+try{renderHomeDashboard()}catch(e){console.warn('HOME initial render:',e)}
+
+const DATA_EMBEDDED_KEYS=[
+  'vda63_requested_dashboard_complete_v1',
+  'iatf16949_audit_guide_v1',
+  'vda63_audit_findings_v1',
+  'during_internal_system_audit_manager_v1',
+  'vda_iatf_procedure_analysis_v1'
+];
+
+function embeddedDataStatsFromRaw(key,raw){
+  let data=null;
+  try{data=JSON.parse(raw)}catch(e){}
+  if(key==='vda63_requested_dashboard_complete_v1'||key==='iatf16949_audit_guide_v1'){
+    let modules=0,clauses=0,minimum=0,examples=0,english=0;
+    if(Array.isArray(data)){
+      data.forEach(m=>{
+        modules++;
+        (m.clauses||[]).forEach(c=>{
+          clauses++;
+          minimum+=Array.isArray(c.minimum)?c.minimum.length:0;
+          examples+=Array.isArray(c.examples)?c.examples.length:0;
+          english+=Array.isArray(c.minimumEn)?c.minimumEn.length:0;
+        });
+      });
+    }
+    return {modules,clauses,minimum,examples,english};
+  }
+  if(key==='vda63_audit_findings_v1')return {count:Array.isArray(data)?data.length:0};
+  if(key==='during_internal_system_audit_manager_v1')return {
+    plans:Array.isArray(data?.plan)?data.plan.length:0,
+    closures:data?.closure&&typeof data.closure==='object'?Object.keys(data.closure).length:0
+  };
+  if(key==='vda_iatf_procedure_analysis_v1')return {count:Array.isArray(data)?data.length:(data&&typeof data==='object'?Object.keys(data).length:0)};
+  return {};
+}
+
+function currentEmbeddedDataSnapshot(){
+  const items={};
+  DATA_EMBEDDED_KEYS.forEach(k=>{
+    const raw=localStorage.getItem(k);
+    if(raw!=null)items[k]=raw;
+  });
+  return {version:'DURING_EMBEDDED_DATA_V1',exportedAt:new Date().toISOString(),items};
+}
+
+function exportHtmlWithCurrentData(){
+  const snapshot=currentEmbeddedDataSnapshot();
+  window.__currentEmbeddedSnapshot=snapshot;
+
+  const root=document.getElementById('dataEmbeddedSummary');
+  if(root){
+    const vda=embeddedDataStatsFromRaw('vda63_requested_dashboard_complete_v1',snapshot.items['vda63_requested_dashboard_complete_v1']);
+    const iatf=embeddedDataStatsFromRaw('iatf16949_audit_guide_v1',snapshot.items['iatf16949_audit_guide_v1']);
+    const findings=embeddedDataStatsFromRaw('vda63_audit_findings_v1',snapshot.items['vda63_audit_findings_v1']);
+    const audit=embeddedDataStatsFromRaw('during_internal_system_audit_manager_v1',snapshot.items['during_internal_system_audit_manager_v1']);
+    const proc=embeddedDataStatsFromRaw('vda_iatf_procedure_analysis_v1',snapshot.items['vda_iatf_procedure_analysis_v1']);
+
+    const cards=[
+      ['VDA 6.3',`모듈 ${vda.modules||0} · 조항 ${vda.clauses||0} · 최소요구 ${vda.minimum||0} · 사례 ${vda.examples||0}`],
+      ['IATF 16949',`모듈 ${iatf.modules||0} · 조항 ${iatf.clauses||0} · 최소요구 ${iatf.minimum||0} · 영문 ${iatf.english||0}`],
+      ['지적사항',`${findings.count||0}건`],
+      ['내부심사 계획/종결',`계획 ${audit.plans||0}건 · 종결관리 ${audit.closures||0}건`],
+      ['절차서 분석',`${proc.count||0}건`],
+      ['내보내기 시각',new Date(snapshot.exportedAt).toLocaleString()]
+    ];
+    root.innerHTML=cards.map(x=>`<div style="border:1px solid #dbe3ef;border-radius:9px;padding:10px;background:#fff"><b style="display:block;color:#0f172a">${escapeHtml(x[0])}</b><span style="display:block;margin-top:4px;color:#64748b;font-size:12px">${escapeHtml(x[1])}</span></div>`).join('');
+  }
+  document.getElementById('dataEmbeddedExportModal')?.classList.add('show');
+}
+
+function closeDataEmbeddedExportModal(){
+  document.getElementById('dataEmbeddedExportModal')?.classList.remove('show');
+}
+
+function safeJsonForInlineScript(obj){
+  return JSON.stringify(obj).replace(/</g,'\\u003c').replace(/\u2028/g,'\\u2028').replace(/\u2029/g,'\\u2029');
+}
+
+function buildEmbeddedDataBootstrap(snapshot){
+  const payload=safeJsonForInlineScript(snapshot);
+  return `<script id="duringEmbeddedDataBootstrap">
+(function(){
+  const SNAPSHOT=${payload};
+  const MARKER='during_embedded_data_imported_v1';
+  try{
+    const hasAnyExisting=Object.keys(SNAPSHOT.items||{}).some(k=>localStorage.getItem(k)!=null);
+
+    function importSnapshot(){
+      const stamp=Date.now();
+      Object.entries(SNAPSHOT.items||{}).forEach(([k,raw])=>{
+        const old=localStorage.getItem(k);
+        if(old!=null&&old!==raw){
+          try{localStorage.setItem(k+'_before_embedded_import_'+stamp,old)}catch(e){}
+        }
+        localStorage.setItem(k,raw);
+      });
+      localStorage.setItem(MARKER,SNAPSHOT.exportedAt||new Date().toISOString());
+    }
+
+    if(!hasAnyExisting){
+      importSnapshot();
+    }else{
+      window.addEventListener('DOMContentLoaded',function(){
+        setTimeout(function(){
+          try{
+            if(localStorage.getItem(MARKER)===SNAPSHOT.exportedAt)return;
+            const box=document.createElement('div');
+            box.style.cssText='position:fixed;z-index:999999;left:50%;top:22px;transform:translateX(-50%);max-width:760px;width:calc(100% - 30px);padding:13px 15px;background:#ecfdf5;border:1px solid #34d399;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.15);font-family:Arial,Malgun Gothic,sans-serif;color:#065f46';
+            box.innerHTML='<b>이 HTML 파일에는 DURING 입력 DATA가 포함되어 있습니다.</b><br><span style="font-size:12px">현재 브라우저에도 기존 DATA가 있습니다. 포함 DATA를 복원할지 선택해 주세요.</span><div style="margin-top:8px;display:flex;gap:7px"><button id="embeddedImportYes" style="padding:7px 11px;border:0;border-radius:6px;background:#059669;color:white;font-weight:700;cursor:pointer">포함 DATA 복원</button><button id="embeddedImportNo" style="padding:7px 11px;border:1px solid #a7f3d0;border-radius:6px;background:white;color:#065f46;cursor:pointer">현재 DATA 유지</button></div>';
+            document.body.appendChild(box);
+            document.getElementById('embeddedImportYes').onclick=function(){importSnapshot();box.remove();location.reload()};
+            document.getElementById('embeddedImportNo').onclick=function(){box.remove()};
+          }catch(e){}
+        },500);
+      });
+    }
+  }catch(e){console.error('Embedded DURING data bootstrap failed:',e)}
+})();
+<\/script>`;
+}
+
+async function performDataEmbeddedHtmlExport(){
+  try{
+    const snapshot=currentEmbeddedDataSnapshot();
+    let source='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+
+    // 이전 embedded bootstrap이 있으면 제거
+    source=source.replace(/<script id="duringEmbeddedDataBootstrap">[\s\S]*?<\\\/script>/i,'');
+
+    // 현재 runtime용 export modal은 유지해도 무방하나, 포함 데이터 bootstrap은 반드시 head 맨 앞에 삽입
+    const bootstrap=buildEmbeddedDataBootstrap(snapshot);
+    source=source.replace(/<head([^>]*)>/i,match=>match+'\n'+bootstrap+'\n');
+
+    const filename='DURING_VDA_IATF_심사가이드_DATA포함_'+new Date().toISOString().slice(0,10)+'.html';
+    const blob=new Blob([source],{type:'text/html;charset=utf-8'});
+
+    if(typeof window.showSaveFilePicker==='function'&&window.isSecureContext){
+      try{
+        const h=await window.showSaveFilePicker({
+          suggestedName:filename,
+          types:[{description:'HTML Document',accept:{'text/html':['.html']}}]
+        });
+        const w=await h.createWritable();
+        await w.write(blob);
+        await w.close();
+        closeDataEmbeddedExportModal();
+        showToast('현재 DATA가 포함된 HTML을 저장했습니다.');
+        return;
+      }catch(e){
+        if(e&&e.name==='AbortError')return;
+      }
+    }
+
+    const u=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=u;
+    a.download=filename;
+    a.style.display='none';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(()=>{a.remove();URL.revokeObjectURL(u)},10000);
+    closeDataEmbeddedExportModal();
+    showToast('현재 DATA 포함 HTML 다운로드를 실행했습니다.');
+  }catch(e){
+    console.error(e);
+    alert('DATA 포함 HTML 생성 중 오류가 발생했습니다: '+(e.message||e));
+  }
+}
+
+
+const DURING_DB_KEYS=[
+  'vda63_requested_dashboard_complete_v1',
+  'iatf16949_audit_guide_v1',
+  'vda63_audit_findings_v1',
+  'during_internal_system_audit_manager_v1',
+  'vda_iatf_procedure_analysis_v1'
+];
+
+function collectDuringDatabase(){
+  const db={
+    format:'DURING_QMS_DB_BACKUP',
+    version:1,
+    exportedAt:new Date().toISOString(),
+    items:{}
+  };
+  DURING_DB_KEYS.forEach(k=>{
+    const raw=localStorage.getItem(k);
+    if(raw!=null){
+      try{db.items[k]=JSON.parse(raw)}
+      catch(e){db.items[k]=raw}
+    }
+  });
+  return db;
+}
+
+function downloadDatabaseJson(){
+  try{
+    const db=collectDuringDatabase();
+    const text=JSON.stringify(db,null,2);
+    const blob=new Blob([text],{type:'application/json;charset=utf-8'});
+    const filename='DURING_QMS_DB_Backup_'+new Date().toISOString().slice(0,10)+'.json';
+
+    if(typeof window.showSaveFilePicker==='function'&&window.isSecureContext){
+      (async()=>{
+        try{
+          const h=await window.showSaveFilePicker({
+            suggestedName:filename,
+            types:[{description:'JSON Database Backup',accept:{'application/json':['.json']}}]
+          });
+          const w=await h.createWritable();
+          await w.write(blob);await w.close();
+          showToast('DB JSON 백업을 저장했습니다.');
+        }catch(e){
+          if(e&&e.name!=='AbortError')fallbackJsonDownload(blob,filename);
+        }
+      })();
+    }else{
+      fallbackJsonDownload(blob,filename);
+    }
+  }catch(e){
+    console.error(e);
+    alert('DB JSON 백업 생성 오류: '+(e.message||e));
+  }
+}
+
+function fallbackJsonDownload(blob,filename){
+  const u=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=u;a.download=filename;a.style.display='none';
+  document.body.appendChild(a);a.click();
+  setTimeout(()=>{a.remove();URL.revokeObjectURL(u)},10000);
+  showToast('DB JSON 다운로드를 실행했습니다.');
+}
+
+function restoreDatabaseJsonFile(file){
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(){
+    try{
+      const db=JSON.parse(reader.result);
+      if(!db||db.format!=='DURING_QMS_DB_BACKUP'||!db.items){
+        throw new Error('DURING DB 백업 형식이 아닙니다.');
+      }
+
+      const keys=Object.keys(db.items);
+      const summary=keys.map(k=>{
+        const v=db.items[k];
+        if(Array.isArray(v))return `${k}: 배열 ${v.length}개`;
+        if(v&&typeof v==='object')return `${k}: 객체 ${Object.keys(v).length}개`;
+        return `${k}: 데이터 있음`;
+      }).join('\n');
+
+      if(!confirm('다음 DB를 복원하시겠습니까?\n\n'+summary+'\n\n현재 DATA는 복원 전에 자동 백업됩니다.'))return;
+
+      const stamp=Date.now();
+      keys.forEach(k=>{
+        const current=localStorage.getItem(k);
+        if(current!=null){
+          localStorage.setItem(k+'_before_json_restore_'+stamp,current);
+        }
+        localStorage.setItem(k,JSON.stringify(db.items[k]));
+      });
+
+      alert('DB JSON 복원을 완료했습니다. 화면을 새로고침합니다.');
+      location.reload();
+    }catch(e){
+      console.error(e);
+      alert('DB JSON 복원 오류: '+(e.message||e));
+    }finally{
+      const input=document.getElementById('dbJsonRestoreFile');
+      if(input)input.value='';
+    }
+  };
+  reader.readAsText(file,'utf-8');
+}
+
 document.getElementById('standardSelector').onchange=e=>setStandard(e.target.value);
 
 // 지적사항 선택 삭제: 앱 내부 확인창 방식
@@ -2191,4 +3506,90 @@ async function exportProcedureCSV(){
 const dz=document.getElementById('procedureDropzone'),pf=document.getElementById('procedureFiles');const procOpen=document.getElementById('procedureOpenBtn'),procTop=document.getElementById('procedureTopBtn'),procStd=document.getElementById('procedureStandardSelector');if(procOpen)procOpen.onclick=openProcedureModal;if(procTop)procTop.onclick=openProcedureModal;if(procStd)procStd.onchange=e=>{activeStandard=e.target.value;document.getElementById('standardSelector').value=activeStandard;document.getElementById('procedureStandardLabel').textContent=activeStandard==='VDA'?'VDA 6.3':'IATF 16949';setStandard(activeStandard);procedureResults=[];renderProcedureResults();document.getElementById('procedureStatus').textContent='분석 기준이 변경되었습니다. 파일을 등록하고 분석을 실행하십시오.'};document.getElementById('procedureCloseBtn').onclick=closeProcedureModal;pf.onchange=e=>setProcedureFiles(e.target.files);dz.ondragover=e=>{e.preventDefault();dz.classList.add('drag')};dz.ondragleave=()=>dz.classList.remove('drag');dz.ondrop=e=>{e.preventDefault();dz.classList.remove('drag');setProcedureFiles(e.dataTransfer.files)};document.getElementById('procedureAnalyzeBtn').onclick=analyzeProcedures;document.getElementById('procedureClearBtn').onclick=()=>{procedureFilesSelected=[];procedureResults=[];renderProcedureFiles();renderProcedureResults();document.getElementById('procedureStatus').textContent='등록된 파일이 없습니다.'};document.getElementById('procedureExportBtn').onclick=exportProcedureCSV;
 try{const saved=JSON.parse(localStorage.getItem(PROCEDURE_RESULT_STORAGE));if(Array.isArray(saved))procedureResults=saved}catch(e){}
 
-</script></body></html>
+</script>
+<script id="vdaSafeRecoveryHotfix">
+(function(){
+  const PRIMARY='vda63_requested_dashboard_complete_v1';
+
+  function stats(d){
+    const s={p:new Set(),clauses:0,minimum:0,examples:0,score:0};
+    if(!Array.isArray(d)) return s;
+    d.forEach(m=>{
+      const raw=(String(m&&m.id||'')+' '+String(m&&m.name||'')).toUpperCase();
+      let mm=raw.match(/\bP\s*([1-7])\b/);
+      if(mm)s.p.add(Number(mm[1]));
+      (m&&m.clauses||[]).forEach(c=>{
+        const id=String(c&&c.id||'').toUpperCase();
+        const cm=id.match(/\bP\s*([1-7])(?:\.|$)/);
+        if(cm)s.p.add(Number(cm[1]));
+        if(cm||mm){
+          s.clauses++;
+          s.minimum+=Array.isArray(c.minimum)?c.minimum.length:0;
+          s.examples+=Array.isArray(c.examples)?c.examples.length:0;
+        }
+      });
+    });
+    s.score=s.p.size*100000+s.clauses*1000+s.minimum*50+s.examples*30;
+    return s;
+  }
+
+  function candidates(){
+    const arr=[];
+    for(let i=0;i<localStorage.length;i++){
+      const key=localStorage.key(i);
+      try{
+        const raw=localStorage.getItem(key);
+        const d=JSON.parse(raw);
+        const st=stats(d);
+        if(st.p.size>=2 && st.clauses>=5)arr.push({key,raw,st});
+      }catch(e){}
+    }
+    return arr.sort((a,b)=>b.st.score-a.st.score);
+  }
+
+  window.safeVdaRecovery=function(){
+    const list=candidates();
+    if(!list.length){
+      alert('브라우저 저장영역에서 VDA P1~P7/P2~P7 데이터 백업을 찾지 못했습니다. 이전에 데이터가 정상적으로 보이던 HTML 파일을 같은 브라우저에서 한 번 열어 주세요.');
+      return;
+    }
+    let current=null;
+    try{ current=stats(JSON.parse(localStorage.getItem(PRIMARY))); }catch(e){ current=stats([]); }
+    const best=list.find(x=>x.key!==PRIMARY)||list[0];
+    const msg=
+      'VDA 데이터 복구 후보를 찾았습니다.\\n\\n'+
+      '복구 후보: '+best.key+'\\n'+
+      'P 모듈: '+best.st.p.size+'개 / 조항: '+best.st.clauses+'개 / 최소요구사항: '+best.st.minimum+'개 / 이행사례: '+best.st.examples+'개\\n\\n'+
+      '현재 저장 데이터: P 모듈 '+current.p.size+'개 / 조항 '+current.clauses+'개 / 최소요구사항 '+current.minimum+'개\\n\\n'+
+      '이 후보로 VDA 데이터를 복구하시겠습니까?\\n현재 데이터는 복구 전에 별도 백업합니다.';
+    if(!confirm(msg))return;
+    try{
+      const old=localStorage.getItem(PRIMARY);
+      if(old!==null)localStorage.setItem(PRIMARY+'_before_manual_restore_'+Date.now(),old);
+      localStorage.setItem(PRIMARY,best.raw);
+      alert('VDA 6.3 데이터를 복구했습니다. 화면을 새로고침하면 복구된 P1~P7 데이터가 표시됩니다.');
+      location.reload();
+    }catch(e){
+      alert('복구 중 오류: '+(e.message||e));
+    }
+  };
+
+  // 앱 화면이 완전히 뜬 뒤에만 버튼을 붙입니다.
+  window.addEventListener('load',function(){
+    setTimeout(function(){
+      try{
+        const topbar=document.querySelector('.topbar') || document.querySelector('header');
+        if(!topbar || document.getElementById('safeVdaRecoveryBtn'))return;
+        const b=document.createElement('button');
+        b.id='safeVdaRecoveryBtn';
+        b.type='button';
+        b.className='btn admin-only';
+        b.textContent='VDA 데이터 복구';
+        b.onclick=window.safeVdaRecovery;
+        topbar.appendChild(b);
+      }catch(e){}
+    },700);
+  });
+})();
+</script>
+</body></html>
