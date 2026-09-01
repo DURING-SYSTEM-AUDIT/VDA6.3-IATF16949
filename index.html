@@ -547,6 +547,29 @@ body.dark .benchmark-explain{background:#0f1b28;color:#cbd8e5;border-color:#6eb0
 body.dark .training-std-badge{background:#17314a;color:#cce6ff}
 body.dark #trainingStdGuide.training-refreshed{color:#86efac}
 </style>
+
+<style id="auditAutoClauseMappingStyle">
+.audit-auto-map-info{margin-top:4px;font-size:10px;line-height:1.35;color:#64748b;white-space:normal}
+.audit-auto-map-info.good{color:#047857;font-weight:700}
+.audit-auto-map-info.mid{color:#b45309;font-weight:700}
+.audit-auto-map-info.low{color:#64748b}
+.audit-clause.auto-mapped{border-color:#34d399!important;background:#f0fdf4!important}
+.audit-clause.manual-mapped{border-color:#93c5fd!important;background:#eff6ff!important}
+</style>
+
+<style id="auditDeepAutoMapStyle">
+.audit-clause{display:none!important}
+.audit-map-result{
+  min-width:210px;max-width:310px;padding:7px 9px;border:1px solid #a7f3d0;
+  background:#f0fdf4;border-radius:7px;line-height:1.35;font-size:11px;color:#065f46
+}
+.audit-map-result .id{font-weight:900;color:#047857;margin-right:5px}
+.audit-map-result .title{font-weight:700;color:#0f172a}
+.audit-map-result .confidence{display:block;margin-top:3px;color:#64748b;font-size:10px}
+.audit-map-result.unmapped{border-color:#cbd5e1;background:#f8fafc;color:#64748b}
+.audit-map-alt{margin-top:3px;font-size:9px;color:#64748b;line-height:1.3}
+.audit-map-remap{margin-top:4px;padding:2px 6px;border:1px solid #cbd5e1;background:#fff;border-radius:5px;font-size:9px;cursor:pointer}
+</style>
 </head><body>
 <div class="app"><aside class="sidebar"><div class="brand"><div class="logo">✓</div><div><b id="brandStandard">VDA 6.3</b><small id="brandSubtitle">프로세스 심사 가이드</small></div></div><div class="search"><input id="search" placeholder="조항 검색"></div><div id="menu"></div>
 <div class="finding-side" id="findingSide">
@@ -670,7 +693,7 @@ body.dark #trainingStdGuide.training-refreshed{color:#86efac}
       </div>
     </section>
   </div>
-</div><header class="topbar"><div style="display:flex;align-items:center;gap:10px"><select id="standardSelector" class="btn" style="font-weight:800"><option value="VDA">VDA 6.3</option><option value="IATF">IATF 16949</option></select><h1 id="mainGuideTitle">VDA 6.3 프로세스 심사 가이드</h1></div><div class="actions"><button class="btn" id="homeTopBtn" type="button" onclick="showHomeView()">HOME</button><button class="btn primary" id="dataEmbeddedHtmlBtn" type="button" onclick="exportHtmlWithCurrentData()" style="background:#0f766e;border-color:#0f766e;color:#fff">DATA 포함 HTML</button><button class="btn" id="dbJsonBackupBtn" type="button" onclick="downloadDatabaseJson()" style="border-color:#7c3aed;color:#6d28d9;font-weight:800">DB JSON 백업</button><label class="btn" for="dbJsonRestoreFile" style="border-color:#7c3aed;color:#6d28d9;font-weight:800;cursor:pointer">DB JSON 복원</label><input id="dbJsonRestoreFile" type="file" accept=".json,application/json" style="display:none" onchange="restoreDatabaseJsonFile(this.files[0])"><button class="btn" onclick="toggleTheme()">화면 모드</button><button class="btn admin-only" onclick="openClauseModal(true)">+ 조항 추가</button><button class="btn primary admin-only" id="procedureTopBtn" type="button">절차서 분석</button><button class="btn" id="auditSystemTopBtn" type="button" onclick="openAuditSystemModal()" style="border-color:#2563eb;color:#1d4ed8">내부시스템심사</button><button class="btn primary" id="trainingMaterialTopBtn" type="button" onclick="openTrainingMaterialModal()" style="background:#0f766e;border-color:#0f766e;color:#fff">교육자료</button><button class="btn" id="backupBtn" type="button" onclick="backup(); return false;">저장/백업</button><label class="btn admin-only">불러오기<input class="hidden" type="file" id="restoreFile" accept="application/json"></label><button class="btn" id="excelBtn" type="button" onclick="exportCSV(); return false;">Excel</button><button class="btn" id="pdfBtn" type="button" onclick="printPDF(); return false;">PDF 출력</button><span id="modeChip" class="viewer-chip">일반 열람</span><button id="loginBtn" class="btn" type="button" onclick="openAdminLogin()">관리자 로그인</button><button id="logoutBtn" class="btn hidden" type="button" onclick="logoutAdmin()">로그아웃</button></div></header><div id="actionStatus" style="display:none;margin:8px 18px 0;padding:9px 12px;border:1px solid #bfdbfe;background:#eff6ff;color:#1e40af;border-radius:8px;font-size:13px"></div>
+</div><header class="topbar"><div style="display:flex;align-items:center;gap:10px"><select id="standardSelector" class="btn" style="font-weight:800"><option value="VDA">VDA 6.3</option><option value="IATF">IATF 16949</option></select><h1 id="mainGuideTitle">VDA 6.3 프로세스 심사 가이드</h1></div><div class="actions"><button class="btn" id="homeTopBtn" type="button" onclick="showHomeView()">HOME</button><button class="btn" id="dbJsonBackupBtn" type="button" onclick="downloadDatabaseJson()" style="border-color:#7c3aed;color:#6d28d9;font-weight:800">DB JSON 백업</button><button class="btn admin-only" onclick="openClauseModal(true)">+ 조항 추가</button><button class="btn primary admin-only" id="procedureTopBtn" type="button">절차서 분석</button><button class="btn" id="auditSystemTopBtn" type="button" onclick="openAuditSystemModal()" style="border-color:#2563eb;color:#1d4ed8">내부시스템심사</button><button class="btn primary" id="trainingMaterialTopBtn" type="button" onclick="openTrainingMaterialModal()" style="background:#0f766e;border-color:#0f766e;color:#fff">교육자료</button><button class="btn" id="backupBtn" type="button" onclick="backup(); return false;">저장/백업</button><label class="btn admin-only">불러오기<input class="hidden" type="file" id="restoreFile" accept="application/json"></label><button class="btn" id="excelBtn" type="button" onclick="exportCSV(); return false;">Excel</button><button class="btn" id="pdfBtn" type="button" onclick="printPDF(); return false;">PDF 출력</button><span id="modeChip" class="viewer-chip">일반 열람</span><button id="loginBtn" class="btn" type="button" onclick="openAdminLogin()">관리자 로그인</button><button id="logoutBtn" class="btn hidden" type="button" onclick="logoutAdmin()">로그아웃</button></div></header><div id="actionStatus" style="display:none;margin:8px 18px 0;padding:9px 12px;border:1px solid #bfdbfe;background:#eff6ff;color:#1e40af;border-radius:8px;font-size:13px"></div>
 <div class="content"><div class="crumb" id="crumb"></div>
 <div id="readonlyNotice" class="readonly-note">일반 열람 모드입니다. 조항 내용과 평가 기준은 조회할 수 있으며, 수정·삭제·추가·평가 입력은 관리자 로그인 후 가능합니다.</div><section class="panel" id="detailPanel"><div class="title-row"><div><span class="badge" id="clauseId"></span><h2 id="clauseTitle"></h2></div><div class="actions"><button class="btn warn admin-only" onclick="openClauseModal(false)">수정</button><button class="btn danger admin-only" id="deleteClauseBtn" type="button" onclick="requestDelete(currentModule,currentClause); return false;">삭제</button></div></div>
 <div class="two-col"><div class="guide-card req"><h3>◉ 평가 관련 최소 요구사항</h3><div class="list" id="minimumList"></div><div class="addline admin-only"><textarea id="minimumInput" rows="3" placeholder="최소 요구사항 추가&#10;Shift+Enter : 줄바꿈 / Enter : 추가"></textarea><button class="btn primary" onclick="addItem('minimum')">추가</button></div></div><div class="guide-card example" id="rightGuideCard"><h3 id="rightGuideTitle">★ 이행을 위한 사례</h3><div class="list" id="exampleList"></div><div class="addline admin-only"><textarea id="exampleInput" rows="3" placeholder="이행 사례 추가&#10;Shift+Enter : 줄바꿈 / Enter : 추가"></textarea><button class="btn warn" id="rightGuideAddBtn" onclick="addRightGuideItem()">추가</button></div></div></div></section>
@@ -741,14 +764,14 @@ body.dark #trainingStdGuide.training-refreshed{color:#86efac}
       <div class="audit-dashboard-bottom">
         <div class="audit-dashboard-card">
           <h3>미종결 지적사항 Follow-up</h3>
-          <div class="audit-table-wrap"><table class="audit-table"><thead><tr><th>No</th><th>부서</th><th>프로세스</th><th>조항</th><th>구분</th><th>지적사항</th><th>담당자</th><th>완료예정일</th><th>상태</th></tr></thead><tbody id="dashboardOpenBody"></tbody></table></div>
+          <div class="audit-table-wrap"><table class="audit-table"><thead><tr><th>No</th><th>부서</th><th>프로세스</th><th>자동매핑 조항</th><th>구분</th><th>지적사항</th><th>담당자</th><th>완료예정일</th><th>상태</th></tr></thead><tbody id="dashboardOpenBody"></tbody></table></div>
         </div>
       </div>
     </div>
 
     <div class="audit-pane" id="auditClosePane">
       <div class="audit-summary"><div class="audit-kpi">전체 지적<b id="auditKpiTotal">0</b></div><div class="audit-kpi">Major<b id="auditKpiMajor">0</b></div><div class="audit-kpi">Minor<b id="auditKpiMinor">0</b></div><div class="audit-kpi">종결<b id="auditKpiClosed">0</b></div><div class="audit-kpi">미종결<b id="auditKpiOpen">0</b></div></div>
-      <div class="audit-report-actions" style="margin:10px 0"><button class="btn primary admin-only" type="button" onclick="addAuditFinding()">+ 지적사항 추가</button><button class="btn danger admin-only" type="button" onclick="deleteSelectedAuditFindings()">선택 삭제</button><span style="font-size:12px;color:#64748b;align-self:center">선택한 보고서 기준(IATF 16949 / VDA 6.3)에 해당하는 지적사항만 표시됩니다.</span></div>
+      <div class="audit-report-actions" style="margin:10px 0"><button class="btn primary admin-only" type="button" onclick="addAuditFinding()">+ 지적사항 추가</button><button class="btn admin-only" type="button" onclick="autoMapAllAuditFindings()">조항 자동매핑</button><button class="btn danger admin-only" type="button" onclick="deleteSelectedAuditFindings()">선택 삭제</button><span style="font-size:12px;color:#64748b;align-self:center">선택한 보고서 기준(IATF 16949 / VDA 6.3)에 해당하는 지적사항만 표시됩니다.</span></div>
       <div class="audit-table-wrap"><table class="audit-table" style="min-width:1900px"><thead><tr><th style="width:34px"><input type="checkbox" id="auditFindingCheckAll" onchange="toggleAuditFindingChecks(this.checked)"></th><th>No</th><th>기준</th><th>부서</th><th>9개 프로세스</th><th>조항</th><th>지적사항</th><th>구분</th><th>담당자</th><th>완료예정일</th><th>개선대책</th><th>유효성 확인</th><th>상태</th><th>종결일</th><th>관리</th></tr></thead><tbody id="auditClosureBody"></tbody></table></div>
     </div>
     <div class="audit-pane" id="auditReportPane">
@@ -1271,18 +1294,260 @@ function closureMeta(f){const c=auditManager.closure[f.id]||(auditManager.closur
 function reportFindings(std){return (findings||[]).filter(f=>findingStandard(f)===std)}
 function auditClauseOptions(std){const out=[];(getStandardDataForReport(std)||[]).forEach(m=>(m.clauses||[]).forEach(c=>out.push({moduleId:m.id,clauseId:c.id,label:`${c.id} ${c.navTitle||c.title||''}`})));return out}
 function auditClauseSelectHtml(f,std){const opts=auditClauseOptions(std);return '<option value="|">미분류</option>'+opts.map(o=>`<option value="${escapeHtml(o.moduleId+'|'+o.clauseId)}" ${f.selectedClause===o.clauseId?'selected':''}>${escapeHtml(o.label)}</option>`).join('')}
+
+function auditMapTokens(text){
+  const stop=new Set(['및','또는','대한','관련','해당','현재','확인','관리','실시','진행','사항','것으로','되어','있음','없음','에서','으로','하고','하는','하지','위해','통해','기준','경우','대해','대하여','the','and','for','with','from','this','that']);
+  return [...new Set(String(text||'').toLowerCase()
+    .replace(/[^0-9a-z가-힣.+/-]+/g,' ')
+    .split(/\s+/).map(x=>x.trim()).filter(x=>x.length>1&&!stop.has(x)))];
+}
+
+function auditPhraseBoost(text, std, clauseId, moduleId){
+  const t=String(text||'').toLowerCase();
+  let score=0;
+  const add=(words,pts)=>words.forEach(w=>{if(t.includes(w.toLowerCase()))score+=pts});
+
+  if(std==='IATF'){
+    const rules=[
+      [/^4\.1/,['조직 상황','내외부 이슈','경영환경','이해관계 상황']],
+      [/^4\.4/,['품질경영시스템','프로세스 맵','프로세스 상호작용','프로세스 성과']],
+      [/^5\.1/,['리더십','경영자 책임','고객중심']],
+      [/^6\.1/,['리스크','위험','기회','비상대응','비상 계획','contingency']],
+      [/^6\.2/,['품질목표','목표 미달','kpi 목표']],
+      [/^7\.1\.3/,['인프라','건물','설비 기반']],
+      [/^7\.1\.4/,['작업환경','온도','습도','청정도','조도']],
+      [/^7\.1\.5/,['계측기','측정기','교정','검교정','msa','측정시스템','gage','게이지']],
+      [/^7\.2/,['교육','자격','역량','숙련도','교육훈련']],
+      [/^7\.5/,['문서','기록','문서관리','개정','배포']],
+      [/^8\.2/,['고객 요구사항','계약검토','주문검토','csr']],
+      [/^8\.3\.3/,['특별특성','special characteristic']],
+      [/^8\.3\.5\.2/,['pfmea','공정흐름도','관리계획','제조공정 설계','공정설계 출력']],
+      [/^8\.4/,['협력업체','공급업체','외주','구매품','공급자 평가','수입검사']],
+      [/^8\.5\.1\.1/,['관리계획서','control plan']],
+      [/^8\.5\.1\.2/,['작업표준서','표준작업','작업지도서','visual standard']],
+      [/^8\.5\.1\.3/,['셋업','set-up','조건설정','초품']],
+      [/^8\.5\.1\.5/,['예방보전','보전','tpm','설비보전','고장']],
+      [/^8\.5\.2/,['추적성','식별','lot','로트']],
+      [/^8\.5\.4/,['보존','보관','포장','선입선출','fifo']],
+      [/^8\.5\.6/,['변경관리','4m 변경','공정변경','설계변경']],
+      [/^8\.6/,['출하 승인','제품 승인','릴리즈']],
+      [/^8\.7/,['부적합품','격리','부적합 제품','재작업','수리']],
+      [/^9\.1\.1/,['공정능력','cpk','ppk','spc','공정 모니터링','성과측정']],
+      [/^9\.1\.2/,['고객만족','score card','스코어카드']],
+      [/^9\.2/,['내부심사','시스템심사','공정심사','제품심사']],
+      [/^9\.3/,['경영검토','management review']],
+      [/^10\.2\.1/,['부적합 및 시정조치','시정조치','재발방지']],
+      [/^10\.2\.3/,['문제해결','8d','5why','근본원인','원인분석']],
+      [/^10\.2\.4/,['에러프루핑','error proof','포카요케','오류방지']]
+    ];
+    rules.forEach(([rx,words])=>{if(rx.test(String(clauseId||'')))add(words,10)});
+  }else{
+    const mr=String(moduleId||'').toUpperCase();
+    const rules={
+      P1:['잠재','프로젝트 선정','요청','프로젝트 범위'],
+      P2:['프로젝트','일정','변경','리스크','프로젝트 관리','apqp','구매활동'],
+      P3:['개발','설계','제품 개발','공정 개발','fmea','요구사항','제조타당성','관리계획'],
+      P4:['실행','검증','승인','릴리즈','ppap','공정능력','초도품','시험','측정시스템','양산준비'],
+      P5:['공급업체','협력업체','공급자','구매','외주','입고','수입검사'],
+      P6:['생산','공정','작업자','설비','자재','추적성','검사','재작업','보전','공정관리','품질관리'],
+      P7:['고객','클레임','반품','서비스','고객만족','8d','필드','보증']
+    };
+    add(rules[mr]||[],5);
+  }
+  return score;
+}
+
+
+
+function auditClauseDatabaseStats(std){
+  const d=getStandardDataForReport(std)||[];
+  const ids=[];
+  d.forEach(m=>(m.clauses||[]).forEach(c=>{if(c?.id)ids.push(String(c.id))}));
+  return {
+    total:ids.length,
+    deep:ids.filter(id=>(id.match(/\./g)||[]).length>=2).length,
+    ids
+  };
+}
+
+function auditAutoMapFinding(f,std,context={}){
+  const dataset=getStandardDataForReport(std)||[];
+  const inputText=[f?.text||'',context.department||'',context.process||''].join(' ');
+  const normalized=String(inputText||'').toLowerCase();
+  const tokens=auditMapTokens(inputText);
+  const candidates=[];
+
+  function depthOf(id){
+    const m=String(id||'').match(/\d+(?:\.\d+)*/);
+    return m?m[0].split('.').length:1;
+  }
+  function phraseList(text){
+    return String(text||'').toLowerCase()
+      .split(/[\n.;:()\[\]{}]/)
+      .map(x=>x.trim())
+      .filter(x=>x.length>=4);
+  }
+
+  dataset.forEach(m=>{
+    (m.clauses||[]).forEach(c=>{
+      // 실제 DB에 저장된 세부조항만 후보로 사용
+      const clauseId=String(c.id||'').trim();
+      if(!clauseId)return;
+
+      const title=`${c.navTitle||''} ${c.title||''}`.trim();
+      const minKo=Array.isArray(c.minimum)?c.minimum:[];
+      const minEn=Array.isArray(c.minimumEn)?c.minimumEn:[];
+      const examples=Array.isArray(c.examples)?c.examples:[];
+      const allReq=[title,...minKo,...minEn,...examples].filter(Boolean);
+      const fullText=allReq.join(' ');
+      const titleTokens=auditMapTokens(title);
+      const bodyTokens=auditMapTokens(fullText);
+      let score=0;
+      const matched=[];
+
+      tokens.forEach(tok=>{
+        let hit=0;
+        if(titleTokens.includes(tok)) hit=18;
+        else if(titleTokens.some(x=>x.includes(tok)||tok.includes(x))) hit=12;
+
+        if(bodyTokens.includes(tok)) hit=Math.max(hit,10);
+        else if(bodyTokens.some(x=>x.includes(tok)||tok.includes(x))) hit=Math.max(hit,6);
+
+        if(hit){score+=hit;matched.push(tok)}
+      });
+
+      // 요구사항 문장/구문 자체가 지적사항과 겹치면 큰 가중치
+      phraseList(fullText).forEach(ph=>{
+        const pt=auditMapTokens(ph);
+        if(pt.length<2)return;
+        const overlap=pt.filter(t=>tokens.includes(t)).length;
+        const ratio=overlap/Math.max(1,Math.min(pt.length,8));
+        if(overlap>=2) score+=Math.round(ratio*30);
+      });
+
+      // 기존 주요 IATF/VDA 보조 키워드
+      score+=auditPhraseBoost(inputText,std,clauseId,m.id);
+
+      // 세부조항 우선: 상위/하위 점수가 비슷하면 실제 세부 조항을 선택
+      const depth=depthOf(clauseId);
+      if(depth>=3 && score>0) score+=3;
+      if(depth>=4 && score>0) score+=2;
+
+      // 부서/프로세스 문맥은 보조점수
+      const ctxTokens=auditMapTokens(`${context.department||''} ${context.process||''}`);
+      ctxTokens.forEach(tok=>{
+        if(titleTokens.some(x=>x===tok))score+=3;
+        if(bodyTokens.some(x=>x===tok))score+=2;
+      });
+
+      // 완전 상위 조항은, 동일 계열에 세부 조항이 존재할 때 약간 감점
+      const prefix=clauseId+'.';
+      const hasChild=(m.clauses||[]).some(x=>String(x.id||'').startsWith(prefix));
+      if(hasChild && depth<=2)score-=4;
+
+      candidates.push({
+        moduleId:m.id,
+        clauseId,
+        label:`${clauseId} ${c.navTitle||c.title||''}`.trim(),
+        title:c.navTitle||c.title||'',
+        score,
+        matched:[...new Set(matched)].slice(0,8),
+        requirementPreview:(minKo[0]||minEn[0]||examples[0]||'').toString().slice(0,180),
+        depth
+      });
+    });
+  });
+
+  candidates.sort((a,b)=>
+    b.score-a.score ||
+    b.depth-a.depth ||
+    String(a.clauseId).localeCompare(String(b.clauseId),'ko')
+  );
+
+  const positive=candidates.filter(x=>x.score>0);
+  const top=positive.slice(0,3);
+  const best=top[0]||null;
+  const second=top[1]||null;
+  let confidence=0;
+
+  if(best){
+    const gap=Math.max(0,best.score-(second?.score||0));
+    confidence=Math.min(99,Math.round(42+best.score*1.15+gap*1.8));
+    if(best.score<12)confidence=Math.min(confidence,52);
+  }
+
+  return {best,top,confidence};
+}
+
+function auditMapResultHtml(f,std){
+  if(!f?.selectedClause){
+    return `<div class="audit-map-result unmapped">지적사항 입력 후 자동매핑</div>`;
+  }
+  const label=(f.autoMapLabel||`${f.selectedClause}`).trim();
+  const alts=Array.isArray(f.matches)?f.matches.slice(1,3):[];
+  return `<div class="audit-map-result">
+    <span class="id">${escapeHtml(f.selectedClause)}</span>
+    <span class="title">${escapeHtml(label.replace(f.selectedClause,'').trim())}</span>
+    <span class="confidence">자동매핑 ${Number(f.autoMapConfidence||0)}%</span>
+    ${alts.length?`<div class="audit-map-alt">차순위: ${alts.map(x=>escapeHtml(x.label||x.clauseId||'')).join(' / ')}</div>`:''}
+    <button class="audit-map-remap admin-only" type="button">재분석</button>
+  </div>`;
+}
+
+function applyAuditAutoMapping(f,std,c,tr,force=false){
+  if(!f||!String(f.text||'').trim())return;
+  if(f.autoClauseManual===true&&!force)return;
+
+  const result=auditAutoMapFinding(f,std,{
+    department:c?.department||'',
+    process:c?.process||''
+  });
+  f.matches=(result.top||[]).map(x=>({
+    moduleId:x.moduleId,clauseId:x.clauseId,label:x.label,score:x.score
+  }));
+
+  if(result.best&&result.best.score>0){
+    f.selectedModule=result.best.moduleId;
+    f.selectedClause=result.best.clauseId;
+    f.standard=std;
+    f.autoClauseManual=false;
+    f.autoMapConfidence=result.confidence;
+    f.autoMapReason=(result.best.matched||[]).join(', ');
+    f.autoMapLabel=result.best.label||result.best.clauseId;
+    f.autoMapRequirement=result.best.requirementPreview||'';
+    saveFindings();
+
+    if(tr){
+      const sel=tr.querySelector('.audit-clause');
+      if(sel){
+        sel.value=result.best.moduleId+'|'+result.best.clauseId;
+        sel.classList.remove('manual-mapped');
+        sel.classList.add('auto-mapped');
+      }
+      const wrap=tr.querySelector('.audit-map-result-wrap');
+      if(wrap){
+        wrap.innerHTML=auditMapResultHtml(f,std);
+        const btn=wrap.querySelector('.audit-map-remap');
+        if(btn)btn.onclick=()=>{f.autoClauseManual=false;applyAuditAutoMapping(f,std,c,tr,true);};
+      }
+    }
+  }
+  return result;
+}
+
 function addAuditFinding(){
   if(!requireAdmin())return;
   const std=selectedAuditStd();
-  const opts=auditClauseOptions(std),first=opts[0]||{};
   const f={
     id:'F'+Date.now()+Math.random().toString(16).slice(2),
     standard:std,
     text:'',
     date:new Date().toISOString(),
     matches:[],
-    selectedClause:first.clauseId||'',
-    selectedModule:first.moduleId||'',
+    selectedClause:'',
+    selectedModule:'',
+    autoClauseManual:false,
+    autoMapConfidence:0,
     schedule:'',
     correctiveAction:''
   };
@@ -1304,6 +1569,25 @@ function addAuditFinding(){
 function deleteAuditFinding(id){if(!requireAdmin())return;if(!confirm('해당 지적사항을 삭제하시겠습니까?'))return;try{localStorage.setItem(FINDING_STORAGE+'_before_audit_delete_'+Date.now(),JSON.stringify(findings))}catch(e){}findings=findings.filter(f=>f.id!==id);if(auditManager.closure)delete auditManager.closure[id];saveFindings();saveAuditManagerData();renderAuditClosure();renderFindingSidebar();showToast('지적사항을 삭제했습니다.')}
 function toggleAuditFindingChecks(checked){document.querySelectorAll('.audit-finding-check').forEach(x=>x.checked=checked)}
 function deleteSelectedAuditFindings(){if(!requireAdmin())return;const ids=[...document.querySelectorAll('.audit-finding-check:checked')].map(x=>x.dataset.id);if(!ids.length){showToast('삭제할 지적사항을 선택해 주세요.');return}if(!confirm(`${ids.length}건을 삭제하시겠습니까?`))return;try{localStorage.setItem(FINDING_STORAGE+'_before_audit_delete_'+Date.now(),JSON.stringify(findings))}catch(e){}findings=findings.filter(f=>!ids.includes(f.id));ids.forEach(id=>{if(auditManager.closure)delete auditManager.closure[id]});saveFindings();saveAuditManagerData();renderAuditClosure();renderFindingSidebar();showToast('선택 지적사항을 삭제했습니다.')}
+
+function autoMapAllAuditFindings(){
+  if(!requireAdmin())return;
+  const std=selectedAuditStd();
+  const rows=reportFindings(std);
+  let mapped=0;
+  rows.forEach(f=>{
+    if(!String(f.text||'').trim())return;
+    const c=closureMeta(f);
+    f.autoClauseManual=false;
+    const r=applyAuditAutoMapping(f,std,c,null,true);
+    if(r?.best&&r.best.score>0)mapped++;
+  });
+  saveFindings();
+  renderAuditClosure();
+  renderAuditDashboard();
+  showToast(`${mapped}건의 지적사항을 ${auditStdLabel(std)} 조항으로 자동매핑했습니다.`);
+}
+
 function renderAuditClosure(){
   const std=selectedAuditStd(),rows=reportFindings(std),body=document.getElementById('auditClosureBody');
   body.innerHTML='';
@@ -1314,7 +1598,10 @@ function renderAuditClosure(){
       <td>${i+1}</td><td>${auditStdLabel(std)}</td>
       <td><input data-k="department" value="${escapeHtml(c.department)}" placeholder="부서명" ${ro}></td>
       <td><select data-k="process" ${ro}>${auditProcessOptions(c.process)}</select></td>
-      <td><select class="audit-clause" ${ro}>${auditClauseSelectHtml(f,std)}</select></td>
+      <td>
+      <select class="audit-clause" ${ro}>${auditClauseSelectHtml(f,std)}</select>
+      <div class="audit-map-result-wrap">${auditMapResultHtml(f,std)}</div>
+    </td>
       <td>${isAdmin?`<textarea class="audit-nc-text" placeholder="지적사항 내용을 입력해 주세요.">${escapeHtml(f.text||'')}</textarea>`:`<div style="white-space:pre-wrap;min-width:270px">${escapeHtml(f.text||'')}</div>`}</td>
       <td><select data-k="severity" ${ro}><option ${c.severity==='Major'?'selected':''}>Major</option><option ${c.severity==='Minor'?'selected':''}>Minor</option><option ${c.severity==='Observation'?'selected':''}>Observation</option></select></td>
       <td><input data-k="owner" value="${escapeHtml(c.owner)}" ${ro}></td>
@@ -1329,12 +1616,40 @@ function renderAuditClosure(){
       tr.querySelectorAll('[data-k]').forEach(el=>el.onchange=()=>{
         c[el.dataset.k]=el.value;
         if(el.dataset.k==='department'&&!c.process)c.process=inferProcessFromDepartment(el.value);
-        saveAuditManagerData();renderAuditKpi();renderAuditDashboard();
+        saveAuditManagerData();
+        if((el.dataset.k==='department'||el.dataset.k==='process')&&String(f.text||'').trim()){
+          applyAuditAutoMapping(f,std,c,tr,true);
+        }
+        renderAuditKpi();renderAuditDashboard();
       });
       const txt=tr.querySelector('.audit-nc-text');
-      txt.onchange=()=>{if(txt.value.trim()){f.text=txt.value.trim();f.matches=analyzeFinding(f.text);saveFindings();renderFindingSidebar();renderAuditDashboard()}};
+      let autoMapTimer;
+      txt.oninput=()=>{
+        clearTimeout(autoMapTimer);
+        f.text=txt.value;
+        autoMapTimer=setTimeout(()=>{
+          if(txt.value.trim()){
+            f.text=txt.value.trim();
+            applyAuditAutoMapping(f,std,c,tr,false);
+            renderFindingSidebar();
+            renderAuditDashboard();
+          }
+        },650);
+      };
+      txt.onchange=()=>{
+        if(txt.value.trim()){
+          f.text=txt.value.trim();
+          applyAuditAutoMapping(f,std,c,tr,true);
+          saveFindings();renderFindingSidebar();renderAuditDashboard();
+        }
+      };
       const clause=tr.querySelector('.audit-clause');
-      clause.onchange=()=>{const [mid,cid]=clause.value.split('|');f.selectedModule=mid||'';f.selectedClause=cid||'';f.standard=std;saveFindings();renderAuditDashboard()};
+      const remapBtn=tr.querySelector('.audit-map-remap');
+      if(remapBtn)remapBtn.onclick=()=>{
+        f.autoClauseManual=false;
+        if(String(f.text||'').trim())applyAuditAutoMapping(f,std,c,tr,true);
+        renderAuditDashboard();
+      };
       const sch=tr.querySelector('.audit-schedule');sch.onchange=()=>{f.schedule=sch.value;saveFindings();renderAuditDashboard()};
       const ca=tr.querySelector('.audit-corrective');ca.onchange=()=>{f.correctiveAction=ca.value;saveFindings()};
     }
@@ -3362,6 +3677,120 @@ function restoreDatabaseJsonFile(file){
   };
   reader.readAsText(file,'utf-8');
 }
+
+
+function auditReportSelectedStandard(){
+  const el=document.getElementById('auditReportStandard')
+    ||document.getElementById('auditManagerStandard')
+    ||document.getElementById('reportStandard')
+    ||document.querySelector('#internalAuditModal select[data-role="standard"]');
+  const v=String(el?.value||window.__auditReportStandard||'VDA').toUpperCase();
+  return v.includes('IATF')?'IATF':'VDA';
+}
+
+function auditPlanRowsForSelectedStandard(){
+  const target=auditReportSelectedStandard();
+  const rows=(typeof auditManager!=='undefined'&&Array.isArray(auditManager.plan))?auditManager.plan:[];
+  return rows.filter(r=>{
+    const raw=String(r?.std||r?.standard||r?.criteria||'').toUpperCase().trim();
+    if(target==='IATF') return raw==='IATF'||raw.includes('IATF');
+    return raw==='VDA'||raw.includes('VDA');
+  });
+}
+
+function syncInternalAuditStandardViews(){
+  const target=auditReportSelectedStandard();
+  window.__auditReportStandard=target;
+
+  // 화면에 존재하는 심사계획 행을 기준별로 즉시 표시/숨김 처리.
+  // 원본 auditManager.plan 데이터는 절대 삭제/변경하지 않는다.
+  const table=document.querySelector('#internalAuditModal table')
+    ||document.querySelector('#auditManagerModal table');
+  if(table){
+    const rows=[...table.querySelectorAll('tbody tr')];
+    rows.forEach(tr=>{
+      const sel=tr.querySelector('select');
+      if(!sel)return;
+      const raw=String(sel.value||'').toUpperCase();
+      const isIatf=raw.includes('IATF');
+      const isVda=raw.includes('VDA');
+      const isCommon=raw.includes('공통')||raw.includes('COMMON')||raw==='ALL';
+      tr.style.display=(target==='IATF'?(isIatf||isCommon):(isVda||isCommon))?'':'none';
+    });
+  }
+
+  // 기존 화면별 렌더러가 있으면 다시 실행
+  [
+    'renderAuditPlan',
+    'renderAuditPlanRows',
+    'renderInternalAuditPlan',
+    'renderAuditManagerPlan',
+    'renderAuditDashboard',
+    'renderAuditFindings',
+    'renderAuditClosure'
+  ].forEach(fn=>{
+    try{
+      if(typeof window[fn]==='function')window[fn]();
+    }catch(e){}
+  });
+
+  // 렌더링 이후 계획행 필터를 한 번 더 적용
+  setTimeout(()=>{
+    const modal=document.getElementById('internalAuditModal')||document.getElementById('auditManagerModal');
+    if(!modal)return;
+    [...modal.querySelectorAll('table tbody tr')].forEach(tr=>{
+      const selects=[...tr.querySelectorAll('select')];
+      const stdSel=selects.find(s=>[...s.options].some(o=>/IATF|VDA|공통/i.test(o.textContent||o.value)));
+      if(!stdSel)return;
+      const raw=String(stdSel.value||'').toUpperCase();
+      const ok=target==='IATF'
+        ? (raw.includes('IATF')||raw.includes('공통')||raw==='ALL')
+        : (raw.includes('VDA')||raw.includes('공통')||raw==='ALL');
+      tr.style.display=ok?'':'none';
+    });
+  },30);
+}
+
+function installAuditStandardSync(){
+  const modal=document.getElementById('internalAuditModal')||document.getElementById('auditManagerModal')||document;
+  const selects=[...modal.querySelectorAll('select')];
+  const stdSelect=selects.find(s=>{
+    const txt=[...s.options].map(o=>(o.textContent||'')+' '+(o.value||'')).join(' ');
+    return /VDA\s*6\.3/i.test(txt)&&/IATF\s*16949/i.test(txt);
+  });
+  if(!stdSelect)return;
+  if(stdSelect.dataset.auditSyncInstalled==='1')return;
+  stdSelect.dataset.auditSyncInstalled='1';
+  if(!stdSelect.id)stdSelect.id='auditReportStandard';
+  stdSelect.addEventListener('change',()=>{
+    window.__auditReportStandard=String(stdSelect.value||'').toUpperCase().includes('IATF')?'IATF':'VDA';
+    setTimeout(syncInternalAuditStandardViews,0);
+  });
+  window.__auditReportStandard=String(stdSelect.value||'').toUpperCase().includes('IATF')?'IATF':'VDA';
+  setTimeout(syncInternalAuditStandardViews,0);
+}
+
+window.addEventListener('click',function(e){
+  const t=e.target;
+  if(t&&(/내부시스템심사/.test(t.textContent||'')||t.id==='internalAuditBtn')){
+    setTimeout(installAuditStandardSync,80);
+  }
+});
+window.addEventListener('load',()=>setTimeout(installAuditStandardSync,300));
+
+
+document.addEventListener('change',function(e){
+  const s=e.target;
+  if(!(s instanceof HTMLSelectElement))return;
+  const opts=[...s.options].map(o=>(o.textContent||'')+' '+(o.value||'')).join(' ');
+  if(/VDA\s*6\.3/i.test(opts)&&/IATF\s*16949/i.test(opts)){
+    const inAudit=s.closest('.modal');
+    if(inAudit && /내부시스템심사|심사 계획|종결관리/.test(inAudit.textContent||'')){
+      window.__auditReportStandard=String(s.value||'').toUpperCase().includes('IATF')?'IATF':'VDA';
+      setTimeout(syncInternalAuditStandardViews,10);
+    }
+  }
+},true);
 
 document.getElementById('standardSelector').onchange=e=>setStandard(e.target.value);
 
