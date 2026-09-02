@@ -693,7 +693,7 @@ body.dark #trainingStdGuide.training-refreshed{color:#86efac}
       </div>
     </section>
   </div>
-</div><header class="topbar"><div style="display:flex;align-items:center;gap:10px"><select id="standardSelector" class="btn" style="font-weight:800"><option value="VDA">VDA 6.3</option><option value="IATF">IATF 16949</option></select><h1 id="mainGuideTitle">VDA 6.3 프로세스 심사 가이드</h1></div><div class="actions"><button class="btn" id="homeTopBtn" type="button" onclick="showHomeView()">HOME</button><button class="btn" id="dbJsonBackupBtn" type="button" onclick="downloadDatabaseJson()" style="border-color:#7c3aed;color:#6d28d9;font-weight:800">DB JSON 백업</button><button class="btn admin-only" onclick="openClauseModal(true)">+ 조항 추가</button><button class="btn primary admin-only" id="procedureTopBtn" type="button">절차서 분석</button><button class="btn" id="auditSystemTopBtn" type="button" onclick="openAuditSystemModal()" style="border-color:#2563eb;color:#1d4ed8">내부시스템심사</button><button class="btn primary" id="trainingMaterialTopBtn" type="button" onclick="openTrainingMaterialModal()" style="background:#0f766e;border-color:#0f766e;color:#fff">교육자료</button><button class="btn" id="backupBtn" type="button" onclick="backup(); return false;">저장/백업</button><label class="btn admin-only">불러오기<input class="hidden" type="file" id="restoreFile" accept="application/json"></label><button class="btn" id="excelBtn" type="button" onclick="exportCSV(); return false;">Excel</button><button class="btn" id="pdfBtn" type="button" onclick="printPDF(); return false;">PDF 출력</button><span id="modeChip" class="viewer-chip">일반 열람</span><button id="loginBtn" class="btn" type="button" onclick="openAdminLogin()">관리자 로그인</button><button id="logoutBtn" class="btn hidden" type="button" onclick="logoutAdmin()">로그아웃</button></div></header><div id="actionStatus" style="display:none;margin:8px 18px 0;padding:9px 12px;border:1px solid #bfdbfe;background:#eff6ff;color:#1e40af;border-radius:8px;font-size:13px"></div>
+</div><header class="topbar"><div style="display:flex;align-items:center;gap:10px"><select id="standardSelector" class="btn" style="font-weight:800"><option value="VDA">VDA 6.3</option><option value="IATF">IATF 16949</option></select><h1 id="mainGuideTitle">VDA 6.3 프로세스 심사 가이드</h1></div><div class="actions"><button class="btn" id="homeTopBtn" type="button" onclick="showHomeView()">HOME</button><button class="btn" id="dbJsonBackupBtn" type="button" onclick="downloadDatabaseJson()" style="border-color:#7c3aed;color:#6d28d9;font-weight:800">DB JSON 백업</button><button class="btn" id="githubCodeExportBtn" type="button" onclick="downloadGithubDeploymentHtml()" title="현재 브라우저의 입력 DATA 전체를 포함한 GitHub 배포용 index.html을 저장합니다." style="border-color:#0f766e;color:#0f766e;font-weight:800">코드파일 다운로드</button><button class="btn admin-only" onclick="openClauseModal(true)">+ 조항 추가</button><button class="btn primary admin-only" id="procedureTopBtn" type="button">절차서 분석</button><button class="btn" id="auditSystemTopBtn" type="button" onclick="openAuditSystemModal()" style="border-color:#2563eb;color:#1d4ed8">내부시스템심사</button><button class="btn primary" id="trainingMaterialTopBtn" type="button" onclick="openTrainingMaterialModal()" style="background:#0f766e;border-color:#0f766e;color:#fff">교육자료</button><button class="btn" id="backupBtn" type="button" onclick="backup(); return false;">저장/백업</button><label class="btn admin-only">불러오기<input class="hidden" type="file" id="restoreFile" accept="application/json"></label><button class="btn" id="excelBtn" type="button" onclick="exportCSV(); return false;">Excel</button><button class="btn" id="pdfBtn" type="button" onclick="printPDF(); return false;">PDF 출력</button><span id="modeChip" class="viewer-chip">일반 열람</span><button id="loginBtn" class="btn" type="button" onclick="openAdminLogin()">관리자 로그인</button><button id="logoutBtn" class="btn hidden" type="button" onclick="logoutAdmin()">로그아웃</button></div></header><div id="actionStatus" style="display:none;margin:8px 18px 0;padding:9px 12px;border:1px solid #bfdbfe;background:#eff6ff;color:#1e40af;border-radius:8px;font-size:13px"></div>
 <div class="content"><div class="crumb" id="crumb"></div>
 <div id="readonlyNotice" class="readonly-note">일반 열람 모드입니다. 조항 내용과 평가 기준은 조회할 수 있으며, 수정·삭제·추가·평가 입력은 관리자 로그인 후 가능합니다.</div><section class="panel" id="detailPanel"><div class="title-row"><div><span class="badge" id="clauseId"></span><h2 id="clauseTitle"></h2></div><div class="actions"><button class="btn warn admin-only" onclick="openClauseModal(false)">수정</button><button class="btn danger admin-only" id="deleteClauseBtn" type="button" onclick="requestDelete(currentModule,currentClause); return false;">삭제</button></div></div>
 <div class="two-col"><div class="guide-card req"><h3>◉ 평가 관련 최소 요구사항</h3><div class="list" id="minimumList"></div><div class="addline admin-only"><textarea id="minimumInput" rows="3" placeholder="최소 요구사항 추가&#10;Shift+Enter : 줄바꿈 / Enter : 추가"></textarea><button class="btn primary" onclick="addItem('minimum')">추가</button></div></div><div class="guide-card example" id="rightGuideCard"><h3 id="rightGuideTitle">★ 이행을 위한 사례</h3><div class="list" id="exampleList"></div><div class="addline admin-only"><textarea id="exampleInput" rows="3" placeholder="이행 사례 추가&#10;Shift+Enter : 줄바꿈 / Enter : 추가"></textarea><button class="btn warn" id="rightGuideAddBtn" onclick="addRightGuideItem()">추가</button></div></div></div></section>
@@ -3791,6 +3791,171 @@ document.addEventListener('change',function(e){
     }
   }
 },true);
+
+
+const GITHUB_DEPLOY_PRIMARY_KEYS=[
+  'vda63_requested_dashboard_complete_v1',
+  'iatf16949_audit_guide_v1',
+  'vda63_audit_findings_v1',
+  'during_internal_system_audit_manager_v1',
+  'vda_iatf_procedure_analysis_v1'
+];
+
+function isDuringAppStorageKey(k){
+  const s=String(k||'').toLowerCase();
+  return GITHUB_DEPLOY_PRIMARY_KEYS.includes(k)
+    || s.includes('vda63')
+    || s.includes('iatf')
+    || s.includes('during_internal')
+    || s.includes('audit')
+    || s.includes('finding')
+    || s.includes('procedure_analysis')
+    || s.includes('training')
+    || s.includes('qms');
+}
+
+function collectGithubDeploymentSnapshot(){
+  const items={};
+  for(let i=0;i<localStorage.length;i++){
+    const k=localStorage.key(i);
+    if(!k||!isDuringAppStorageKey(k))continue;
+    const raw=localStorage.getItem(k);
+    if(raw!=null)items[k]=raw;
+  }
+  GITHUB_DEPLOY_PRIMARY_KEYS.forEach(k=>{
+    const raw=localStorage.getItem(k);
+    if(raw!=null)items[k]=raw;
+  });
+  return {
+    format:'DURING_GITHUB_EMBEDDED_DB',
+    version:2,
+    exportedAt:new Date().toISOString(),
+    sourceLocation:location.href,
+    keys:Object.keys(items),
+    items
+  };
+}
+
+function githubSnapshotSummary(snapshot){
+  function parsed(k){try{return JSON.parse(snapshot.items[k])}catch(e){return null}}
+  function requirementStats(k){
+    const d=parsed(k);
+    let modules=0,clauses=0,minimum=0,examples=0,questions=0;
+    if(Array.isArray(d)){
+      d.forEach(m=>{
+        modules++;
+        (m?.clauses||[]).forEach(c=>{
+          clauses++;
+          minimum+=Array.isArray(c.minimum)?c.minimum.length:0;
+          examples+=Array.isArray(c.examples)?c.examples.length:0;
+          questions+=Array.isArray(c.questions)?c.questions.length:0;
+          questions+=Array.isArray(c.vdaQuestionsV2)?c.vdaQuestionsV2.length:0;
+        });
+      });
+    }
+    return {modules,clauses,minimum,examples,questions};
+  }
+  return {
+    keyCount:Object.keys(snapshot.items||{}).length,
+    vda:requirementStats('vda63_requested_dashboard_complete_v1'),
+    iatf:requirementStats('iatf16949_audit_guide_v1')
+  };
+}
+
+function githubSafeInlineJson(obj){
+  return JSON.stringify(obj)
+    .replace(/</g,'\\u003c')
+    .replace(/\u2028/g,'\\u2028')
+    .replace(/\u2029/g,'\\u2029');
+}
+
+function buildGithubEmbeddedBootstrap(snapshot){
+  const payload=githubSafeInlineJson(snapshot);
+  const primary=JSON.stringify(GITHUB_DEPLOY_PRIMARY_KEYS);
+  return `<script id="duringGithubEmbeddedDb">
+(function(){
+  const SNAPSHOT=${payload};
+  const PRIMARY=${primary};
+  const MARKER='during_github_embedded_db_marker_v2';
+  try{
+    const previous=localStorage.getItem(MARKER);
+    if(previous!==SNAPSHOT.exportedAt){
+      const stamp=Date.now();
+      Object.entries(SNAPSHOT.items||{}).forEach(([k,raw])=>{
+        try{
+          const old=localStorage.getItem(k);
+          if(old!=null&&old!==raw&&PRIMARY.includes(k)){
+            localStorage.setItem(k+'_before_github_sync_'+stamp,old);
+          }
+          localStorage.setItem(k,raw);
+        }catch(e){}
+      });
+      localStorage.setItem(MARKER,SNAPSHOT.exportedAt);
+    }
+    window.__DURING_GITHUB_EMBEDDED_DB__={
+      exportedAt:SNAPSHOT.exportedAt,
+      keyCount:Object.keys(SNAPSHOT.items||{}).length,
+      keys:Object.keys(SNAPSHOT.items||{})
+    };
+  }catch(e){
+    console.error('DURING GitHub embedded DB sync failed',e);
+  }
+})();
+<\/script>`;
+}
+
+async function downloadGithubDeploymentHtml(){
+  try{
+    const snapshot=collectGithubDeploymentSnapshot();
+    const s=githubSnapshotSummary(snapshot);
+    const msg=[
+      'GitHub 배포용 코드파일에 현재 입력 DATA를 포함합니다.',
+      '',
+      `포함 저장영역: ${s.keyCount}개`,
+      `VDA 6.3: 모듈 ${s.vda.modules}, 조항 ${s.vda.clauses}, 최소요구 ${s.vda.minimum}, 이행사례 ${s.vda.examples}, 질문 ${s.vda.questions}`,
+      `IATF 16949: 모듈 ${s.iatf.modules}, 조항 ${s.iatf.clauses}, 최소요구 ${s.iatf.minimum}, 이행사례 ${s.iatf.examples}, 질문 ${s.iatf.questions}`,
+      '',
+      '이 파일을 GitHub에 업로드하면 GitHub origin의 localStorage에도 포함 DATA가 자동 동기화됩니다.',
+      '계속하시겠습니까?'
+    ].join('\n');
+    if(!confirm(msg))return;
+
+    let source='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+    source=source.replace(/<script id="duringGithubEmbeddedDb">[\s\S]*?<\\\/script>/ig,'');
+    source=source.replace(/<script id="duringEmbeddedDataBootstrap">[\s\S]*?<\\\/script>/ig,'');
+    const bootstrap=buildGithubEmbeddedBootstrap(snapshot);
+    source=source.replace(/<head([^>]*)>/i,match=>match+'\n'+bootstrap+'\n');
+
+    const blob=new Blob([source],{type:'text/html;charset=utf-8'});
+    const filename='index.html';
+
+    if(typeof window.showSaveFilePicker==='function'&&window.isSecureContext){
+      try{
+        const h=await window.showSaveFilePicker({
+          suggestedName:filename,
+          types:[{description:'GitHub Pages HTML',accept:{'text/html':['.html']}}]
+        });
+        const w=await h.createWritable();
+        await w.write(blob);
+        await w.close();
+        showToast('GitHub 배포용 전체 DATA 포함 코드파일을 저장했습니다.');
+        return;
+      }catch(e){
+        if(e&&e.name==='AbortError')return;
+      }
+    }
+
+    const u=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=u;a.download=filename;a.style.display='none';
+    document.body.appendChild(a);a.click();
+    setTimeout(()=>{a.remove();URL.revokeObjectURL(u)},10000);
+    showToast('GitHub 배포용 index.html 다운로드를 실행했습니다.');
+  }catch(e){
+    console.error(e);
+    alert('GitHub 배포용 코드파일 생성 오류: '+(e.message||e));
+  }
+}
 
 document.getElementById('standardSelector').onchange=e=>setStandard(e.target.value);
 
