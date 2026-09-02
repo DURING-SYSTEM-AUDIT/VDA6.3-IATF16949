@@ -601,8 +601,8 @@ body.dark #trainingStdGuide.training-refreshed{color:#86efac}
     현재 브라우저에 저장된 DATA 전체를 하나의 HTML 파일에 포함합니다.
   </div>
   <div style="margin-top:9px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-    <button class="btn primary" type="button" onclick="downloadFullDataDeploymentHtml()" style="background:#047857;border-color:#047857;color:#fff;font-weight:900">
-      전체 DATA HTML 다운로드
+    <button class="btn primary" type="button" onclick="downloadDeploymentV6()" style="background:#047857;border-color:#047857;color:#fff;font-weight:900">
+      전체 DATA 코드파일 다운로드
     </button>
     <span id="fullDataExportHealth" style="font-size:11px;color:#64748b"></span><span style="font-size:10px;color:#64748b">※ 코드 표시 미리보기에서 다운로드가 차단되면 자동으로 대체 저장방식을 안내합니다.</span>
   </div>
@@ -707,7 +707,7 @@ body.dark #trainingStdGuide.training-refreshed{color:#86efac}
       </div>
     </section>
   </div>
-</div><header class="topbar"><div style="display:flex;align-items:center;gap:10px"><select id="standardSelector" class="btn" style="font-weight:800"><option value="VDA">VDA 6.3</option><option value="IATF">IATF 16949</option></select><h1 id="mainGuideTitle">VDA 6.3 프로세스 심사 가이드</h1></div><div class="actions"><button class="btn" id="homeTopBtn" type="button" onclick="showHomeView()">HOME</button><button class="btn" id="dbJsonBackupBtn" type="button" onclick="downloadDatabaseJson()" style="border-color:#7c3aed;color:#6d28d9;font-weight:800">DB JSON 백업</button><button class="btn admin-only" onclick="openClauseModal(true)">+ 조항 추가</button><button class="btn primary admin-only" id="procedureTopBtn" type="button">절차서 분석</button><button class="btn" id="auditSystemTopBtn" type="button" onclick="openAuditSystemModal()" style="border-color:#2563eb;color:#1d4ed8">내부시스템심사</button><button class="btn primary" id="trainingMaterialTopBtn" type="button" onclick="openTrainingMaterialModal()" style="background:#0f766e;border-color:#0f766e;color:#fff">교육자료</button><button class="btn" id="backupBtn" type="button" onclick="backup(); return false;">저장/백업</button><label class="btn admin-only">불러오기<input class="hidden" type="file" id="restoreFile" accept="application/json"></label><button class="btn" id="excelBtn" type="button" onclick="exportCSV(); return false;">Excel</button><button class="btn" id="pdfBtn" type="button" onclick="printPDF(); return false;">PDF 출력</button><span id="modeChip" class="viewer-chip">일반 열람</span><button id="loginBtn" class="btn" type="button" onclick="openAdminLogin()">관리자 로그인</button><button id="logoutBtn" class="btn hidden" type="button" onclick="logoutAdmin()">로그아웃</button></div></header><div id="actionStatus" style="display:none;margin:8px 18px 0;padding:9px 12px;border:1px solid #bfdbfe;background:#eff6ff;color:#1e40af;border-radius:8px;font-size:13px"></div>
+</div><header class="topbar"><div style="display:flex;align-items:center;gap:10px"><select id="standardSelector" class="btn" style="font-weight:800"><option value="VDA">VDA 6.3</option><option value="IATF">IATF 16949</option></select><h1 id="mainGuideTitle">VDA 6.3 프로세스 심사 가이드</h1></div><div class="actions"><button class="btn" id="homeTopBtn" type="button" onclick="showHomeView()">HOME</button><button class="btn" id="deploymentCodeBtn" type="button" onclick="downloadDeploymentV6()" title="현재 입력된 VDA 6.3 / IATF 16949 DATA 전체를 포함한 GitHub 배포용 index.html을 생성합니다." style="border-color:#047857;color:#047857;font-weight:900">전체 DATA 코드파일</button><button class="btn" id="dbJsonBackupBtn" type="button" onclick="downloadDatabaseJson()" style="border-color:#7c3aed;color:#6d28d9;font-weight:800">DB JSON 백업</button><button class="btn admin-only" onclick="openClauseModal(true)">+ 조항 추가</button><button class="btn primary admin-only" id="procedureTopBtn" type="button">절차서 분석</button><button class="btn" id="auditSystemTopBtn" type="button" onclick="openAuditSystemModal()" style="border-color:#2563eb;color:#1d4ed8">내부시스템심사</button><button class="btn primary" id="trainingMaterialTopBtn" type="button" onclick="openTrainingMaterialModal()" style="background:#0f766e;border-color:#0f766e;color:#fff">교육자료</button><button class="btn" id="backupBtn" type="button" onclick="backup(); return false;">저장/백업</button><label class="btn admin-only">불러오기<input class="hidden" type="file" id="restoreFile" accept="application/json"></label><button class="btn" id="excelBtn" type="button" onclick="exportCSV(); return false;">Excel</button><button class="btn" id="pdfBtn" type="button" onclick="printPDF(); return false;">PDF 출력</button><span id="modeChip" class="viewer-chip">일반 열람</span><button id="loginBtn" class="btn" type="button" onclick="openAdminLogin()">관리자 로그인</button><button id="logoutBtn" class="btn hidden" type="button" onclick="logoutAdmin()">로그아웃</button></div></header><div id="actionStatus" style="display:none;margin:8px 18px 0;padding:9px 12px;border:1px solid #bfdbfe;background:#eff6ff;color:#1e40af;border-radius:8px;font-size:13px"></div>
 <div class="content"><div class="crumb" id="crumb"></div>
 <div id="readonlyNotice" class="readonly-note">일반 열람 모드입니다. 조항 내용과 평가 기준은 조회할 수 있으며, 수정·삭제·추가·평가 입력은 관리자 로그인 후 가능합니다.</div><section class="panel" id="detailPanel"><div class="title-row"><div><span class="badge" id="clauseId"></span><h2 id="clauseTitle"></h2></div><div class="actions"><button class="btn warn admin-only" onclick="openClauseModal(false)">수정</button><button class="btn danger admin-only" id="deleteClauseBtn" type="button" onclick="requestDelete(currentModule,currentClause); return false;">삭제</button></div></div>
 <div class="two-col"><div class="guide-card req"><h3>◉ 평가 관련 최소 요구사항</h3><div class="list" id="minimumList"></div><div class="addline admin-only"><textarea id="minimumInput" rows="3" placeholder="최소 요구사항 추가&#10;Shift+Enter : 줄바꿈 / Enter : 추가"></textarea><button class="btn primary" onclick="addItem('minimum')">추가</button></div></div><div class="guide-card example" id="rightGuideCard"><h3 id="rightGuideTitle">★ 이행을 위한 사례</h3><div class="list" id="exampleList"></div><div class="addline admin-only"><textarea id="exampleInput" rows="3" placeholder="이행 사례 추가&#10;Shift+Enter : 줄바꿈 / Enter : 추가"></textarea><button class="btn warn" id="rightGuideAddBtn" onclick="addRightGuideItem()">추가</button></div></div></div></section>
@@ -4168,7 +4168,7 @@ function stripOldEmbeddedDataScripts(source){
 }
 
 
-async function downloadFullDataDeploymentHtml(){
+async function downloadDeploymentV6(){
   try{
     const snapshot=makeFullDataSnapshot();
     const c=validateFullDataSnapshot(snapshot);
@@ -4330,6 +4330,208 @@ function refreshFullDataExportHealth(){
 }
 
 window.addEventListener('load',()=>setTimeout(refreshFullDataExportHealth,600));
+
+
+const DEPLOY_V6_KEYS={
+  vda:'vda63_requested_dashboard_complete_v1',
+  iatf:'iatf16949_audit_guide_v1',
+  findings:'vda63_audit_findings_v1',
+  audit:'during_internal_system_audit_manager_v1',
+  procedure:'vda_iatf_procedure_analysis_v1'
+};
+
+function deepCloneDeploy(v){return JSON.parse(JSON.stringify(v));}
+
+function commitDeployEditors(){
+  try{
+    const a=document.activeElement;
+    if(a && ['INPUT','TEXTAREA','SELECT'].includes(a.tagName)){
+      try{a.dispatchEvent(new Event('change',{bubbles:true}))}catch(e){}
+      try{a.blur()}catch(e){}
+    }
+  }catch(e){}
+  try{if(typeof save==='function')save()}catch(e){}
+  try{if(typeof saveFindings==='function')saveFindings()}catch(e){}
+  try{if(typeof saveAuditManagerData==='function')saveAuditManagerData()}catch(e){}
+}
+
+function getCurrentVdaForDeploy(){
+  if(typeof activeStandard!=='undefined' && activeStandard==='VDA' &&
+     typeof data!=='undefined' && Array.isArray(data) && data.length){
+    return deepCloneDeploy(data);
+  }
+  if(typeof vdaDataRef!=='undefined' && Array.isArray(vdaDataRef) && vdaDataRef.length){
+    return deepCloneDeploy(vdaDataRef);
+  }
+  try{
+    const d=JSON.parse(localStorage.getItem(DEPLOY_V6_KEYS.vda));
+    if(Array.isArray(d)&&d.length)return d;
+  }catch(e){}
+  return [];
+}
+
+function getCurrentIatfForDeploy(){
+  if(typeof activeStandard!=='undefined' && activeStandard==='IATF' &&
+     typeof data!=='undefined' && Array.isArray(data) && data.length){
+    return deepCloneDeploy(data);
+  }
+  try{
+    const d=JSON.parse(localStorage.getItem(DEPLOY_V6_KEYS.iatf));
+    if(Array.isArray(d)&&d.length)return d;
+  }catch(e){}
+  return [];
+}
+
+function deployDbStats(d){
+  let modules=0,clauses=0,minimum=0,examples=0,english=0,questions=0;
+  if(Array.isArray(d)){
+    d.forEach(m=>{
+      modules++;
+      (m?.clauses||[]).forEach(c=>{
+        clauses++;
+        minimum+=Array.isArray(c.minimum)?c.minimum.length:0;
+        examples+=Array.isArray(c.examples)?c.examples.length:0;
+        english+=Array.isArray(c.minimumEn)?c.minimumEn.length:0;
+        questions+=Array.isArray(c.questions)?c.questions.length:0;
+        questions+=Array.isArray(c.vdaQuestionsV2)?c.vdaQuestionsV2.length:0;
+      });
+    });
+  }
+  return {modules,clauses,minimum,examples,english,questions};
+}
+
+function buildDeployV6Snapshot(){
+  commitDeployEditors();
+
+  const vda=getCurrentVdaForDeploy();
+  const iatf=getCurrentIatfForDeploy();
+
+  if(vda.length)localStorage.setItem(DEPLOY_V6_KEYS.vda,JSON.stringify(vda));
+  if(iatf.length)localStorage.setItem(DEPLOY_V6_KEYS.iatf,JSON.stringify(iatf));
+
+  const storage={};
+  for(let i=0;i<localStorage.length;i++){
+    const k=localStorage.key(i);
+    if(!k)continue;
+    const raw=localStorage.getItem(k);
+    if(raw!==null)storage[k]=raw;
+  }
+
+  storage[DEPLOY_V6_KEYS.vda]=JSON.stringify(vda);
+  storage[DEPLOY_V6_KEYS.iatf]=JSON.stringify(iatf);
+
+  return {
+    format:'DURING_GITHUB_DEPLOY_V6',
+    version:6,
+    exportedAt:new Date().toISOString(),
+    vda,
+    iatf,
+    storage
+  };
+}
+
+function deploySafeJson(v){
+  return JSON.stringify(v)
+    .replace(/</g,'\\u003c')
+    .replace(/\u2028/g,'\\u2028')
+    .replace(/\u2029/g,'\\u2029');
+}
+
+function buildDeployV6Bootstrap(snapshot){
+  const payload=deploySafeJson(snapshot);
+  return `<script id="duringDeploySnapshotV6">
+(function(){
+  const S=${payload};
+  try{
+    Object.entries(S.storage||{}).forEach(([k,raw])=>{
+      try{localStorage.setItem(k,raw)}catch(e){}
+    });
+    try{localStorage.setItem('vda63_requested_dashboard_complete_v1',JSON.stringify(S.vda||[]))}catch(e){}
+    try{localStorage.setItem('iatf16949_audit_guide_v1',JSON.stringify(S.iatf||[]))}catch(e){}
+    window.__DURING_DEPLOY_V6__={
+      exportedAt:S.exportedAt,
+      vdaClauses:(S.vda||[]).reduce((n,m)=>n+(m.clauses||[]).length,0),
+      iatfClauses:(S.iatf||[]).reduce((n,m)=>n+(m.clauses||[]).length,0)
+    };
+  }catch(e){console.error('DURING deploy snapshot restore error',e);}
+})();
+<\/script>`;
+}
+
+function stripAllOldDeploySnapshots(source){
+  return source
+    .replace(/<script[^>]*id=["']duringGithubEmbeddedDb["'][^>]*>[\s\S]*?<\/script>/gi,'')
+    .replace(/<script[^>]*id=["']duringEmbeddedDataBootstrap["'][^>]*>[\s\S]*?<\/script>/gi,'')
+    .replace(/<script[^>]*id=["']duringFullDataBootstrap["'][^>]*>[\s\S]*?<\/script>/gi,'')
+    .replace(/<script[^>]*id=["']duringFullDataBootstrapV5["'][^>]*>[\s\S]*?<\/script>/gi,'')
+    .replace(/<script[^>]*id=["']duringDeploySnapshotV6["'][^>]*>[\s\S]*?<\/script>/gi,'');
+}
+
+async function downloadDeploymentV6(){
+  try{
+    const snapshot=buildDeployV6Snapshot();
+    const v=deployDbStats(snapshot.vda);
+    const i=deployDbStats(snapshot.iatf);
+
+    if(!v.clauses||!i.clauses){
+      alert(`DATA 검증 실패\n\nVDA 조항 ${v.clauses}건\nIATF 조항 ${i.clauses}건\n\n다운로드를 중단합니다.`);
+      return;
+    }
+
+    if(!confirm([
+      'GitHub 배포용 전체 DATA 코드파일을 생성합니다.',
+      '',
+      `VDA 6.3: ${v.modules}모듈 / ${v.clauses}조항 / 최소요구사항 ${v.minimum}건 / 이행사례 ${v.examples}건`,
+      `IATF 16949: ${i.modules}모듈 / ${i.clauses}조항 / 최소요구사항 ${i.minimum}건 / 영문요구사항 ${i.english}건`,
+      '',
+      '현재 화면의 VDA/IATF DATA 객체 자체를 파일에 포함합니다.'
+    ].join('\n')))return;
+
+    let source='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+    source=stripAllOldDeploySnapshots(source);
+
+    const bootstrap=buildDeployV6Bootstrap(snapshot);
+    source=source.replace(/<head([^>]*)>/i,match=>match+'\n'+bootstrap+'\n');
+
+    const count=(source.match(/id=["']duringDeploySnapshotV6["']/g)||[]).length;
+    if(count!==1){
+      alert('최신 DATA Snapshot이 1개로 정리되지 않았습니다. 다운로드를 중단합니다.');
+      return;
+    }
+
+    const filename='index.html';
+    const blob=new Blob([source],{type:'text/html;charset=utf-8'});
+
+    if(typeof window.showSaveFilePicker==='function'){
+      try{
+        const h=await window.showSaveFilePicker({
+          suggestedName:filename,
+          types:[{description:'GitHub Pages HTML',accept:{'text/html':['.html']}}]
+        });
+        const w=await h.createWritable();
+        await w.write(blob);
+        await w.close();
+        alert(`index.html 저장 완료\n\nVDA 최소요구사항 ${v.minimum}건\nIATF 최소요구사항 ${i.minimum}건\nIATF 영문요구사항 ${i.english}건`);
+        return;
+      }catch(e){
+        if(e&&e.name==='AbortError')return;
+      }
+    }
+
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;a.download=filename;a.style.display='none';
+    document.body.appendChild(a);a.click();
+    setTimeout(()=>{a.remove();URL.revokeObjectURL(url)},15000);
+
+    try{
+      if(typeof showToast==='function')showToast(`index.html 생성 · VDA 최소요구 ${v.minimum} · IATF 최소요구 ${i.minimum} · 영문 ${i.english}`);
+    }catch(e){}
+  }catch(e){
+    console.error(e);
+    alert('전체 DATA 코드파일 생성 오류: '+(e.message||e));
+  }
+}
 
 document.getElementById('standardSelector').onchange=e=>setStandard(e.target.value);
 
