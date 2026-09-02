@@ -3814,46 +3814,87 @@ function isDuringAppStorageKey(k){
     || s.includes('qms');
 }
 
+
+function flushCurrentStandardBeforeGithubExport(){
+  try{
+    // 현재 편집 중인 input/textarea의 change 이벤트를 먼저 확정
+    const active=document.activeElement;
+    if(active && (active.tagName==='INPUT'||active.tagName==='TEXTAREA'||active.tagName==='SELECT')){
+      try{active.blur()}catch(e){}
+    }
+
+    // 현재 활성 기준의 메모리 DATA를 반드시 저장
+    if(typeof save==='function') save();
+
+    // 안전장치: 현재 data를 활성 기준의 핵심 저장키에 직접 한 번 더 직렬화
+    if(typeof data!=='undefined' && Array.isArray(data)){
+      if(typeof activeStandard!=='undefined' && activeStandard==='IATF'){
+        localStorage.setItem('iatf16949_audit_guide_v1',JSON.stringify(data));
+      }else{
+        localStorage.setItem('vda63_requested_dashboard_complete_v1',JSON.stringify(data));
+      }
+    }
+
+    // VDA 메모리 참조가 별도로 살아있으면 함께 저장
+    if(typeof vdaDataRef!=='undefined' && Array.isArray(vdaDataRef) && vdaDataRef.length){
+      localStorage.setItem('vda63_requested_dashboard_complete_v1',JSON.stringify(vdaDataRef));
+    }
+  }catch(e){
+    console.warn('GitHub export pre-save:',e);
+  }
+}
+
 function collectGithubDeploymentSnapshot(){
+  flushCurrentStandardBeforeGithubExport();
+
+  // 필터링하지 않고 현재 앱 origin의 localStorage 전체를 저장한다.
   const items={};
   for(let i=0;i<localStorage.length;i++){
     const k=localStorage.key(i);
-    if(!k||!isDuringAppStorageKey(k))continue;
+    if(!k)continue;
     const raw=localStorage.getItem(k);
     if(raw!=null)items[k]=raw;
   }
+
+  // 핵심 DB는 최종 확인하여 반드시 포함
   GITHUB_DEPLOY_PRIMARY_KEYS.forEach(k=>{
     const raw=localStorage.getItem(k);
     if(raw!=null)items[k]=raw;
   });
+
   return {
     format:'DURING_GITHUB_EMBEDDED_DB',
-    version:2,
+    version:3,
     exportedAt:new Date().toISOString(),
     sourceLocation:location.href,
+    activeStandard:(typeof activeStandard!=='undefined'?activeStandard:'UNKNOWN'),
     keys:Object.keys(items),
     items
   };
 }
 
+
 function githubSnapshotSummary(snapshot){
   function parsed(k){try{return JSON.parse(snapshot.items[k])}catch(e){return null}}
   function requirementStats(k){
     const d=parsed(k);
-    let modules=0,clauses=0,minimum=0,examples=0,questions=0;
+    let modules=0,clauses=0,minimum=0,examples=0,english=0,questions=0;
+    const ids=[];
     if(Array.isArray(d)){
       d.forEach(m=>{
         modules++;
         (m?.clauses||[]).forEach(c=>{
           clauses++;
+          if(c?.id)ids.push(String(c.id));
           minimum+=Array.isArray(c.minimum)?c.minimum.length:0;
           examples+=Array.isArray(c.examples)?c.examples.length:0;
+          english+=Array.isArray(c.minimumEn)?c.minimumEn.length:0;
           questions+=Array.isArray(c.questions)?c.questions.length:0;
           questions+=Array.isArray(c.vdaQuestionsV2)?c.vdaQuestionsV2.length:0;
         });
       });
     }
-    return {modules,clauses,minimum,examples,questions};
+    return {exists:!!snapshot.items[k],modules,clauses,minimum,examples,english,questions,ids};
   }
   return {
     keyCount:Object.keys(snapshot.items||{}).length,
@@ -3861,7 +3902,6 @@ function githubSnapshotSummary(snapshot){
     iatf:requirementStats('iatf16949_audit_guide_v1')
   };
 }
-
 function githubSafeInlineJson(obj){
   return JSON.stringify(obj)
     .replace(/</g,'\\u003c')
@@ -3876,7 +3916,7 @@ function buildGithubEmbeddedBootstrap(snapshot){
 (function(){
   const SNAPSHOT=${payload};
   const PRIMARY=${primary};
-  const MARKER='during_github_embedded_db_marker_v2';
+  const MARKER='during_github_embedded_db_marker_v3';
   try{
     const previous=localStorage.getItem(MARKER);
     if(previous!==SNAPSHOT.exportedAt){
@@ -3908,12 +3948,23 @@ async function downloadGithubDeploymentHtml(){
   try{
     const snapshot=collectGithubDeploymentSnapshot();
     const s=githubSnapshotSummary(snapshot);
+
+    if(!s.vda.exists || !s.iatf.exists){
+      alert('통합 코드파일을 생성할 수 없습니다. VDA 또는 IATF 핵심 DB가 현재 브라우저 저장영역에 없습니다.\nVDA 존재: '+s.vda.exists+' / IATF 존재: '+s.iatf.exists);
+      return;
+    }
+
+    if(s.vda.clauses===0 || s.iatf.clauses===0){
+      alert('통합 코드파일 생성을 중단했습니다. VDA 또는 IATF 조항 DATA가 0건입니다. 현재 화면 DATA를 먼저 확인해 주세요.');
+      return;
+    }
+
     const msg=[
-      'GitHub 배포용 코드파일에 현재 입력 DATA를 포함합니다.',
+      'HOME 통합 코드파일: VDA 6.3 + IATF 16949 + 내부심사 DATA 전체를 하나의 index.html에 포함합니다.',
       '',
-      `포함 저장영역: ${s.keyCount}개`,
+      `포함 localStorage 전체: ${s.keyCount}개`,
       `VDA 6.3: 모듈 ${s.vda.modules}, 조항 ${s.vda.clauses}, 최소요구 ${s.vda.minimum}, 이행사례 ${s.vda.examples}, 질문 ${s.vda.questions}`,
-      `IATF 16949: 모듈 ${s.iatf.modules}, 조항 ${s.iatf.clauses}, 최소요구 ${s.iatf.minimum}, 이행사례 ${s.iatf.examples}, 질문 ${s.iatf.questions}`,
+      `IATF 16949: 모듈 ${s.iatf.modules}, 조항 ${s.iatf.clauses}, 최소요구 ${s.iatf.minimum}, 영문요구 ${s.iatf.english}, 이행사례 ${s.iatf.examples}, 질문 ${s.iatf.questions}`,
       '',
       '이 파일을 GitHub에 업로드하면 GitHub origin의 localStorage에도 포함 DATA가 자동 동기화됩니다.',
       '계속하시겠습니까?'
